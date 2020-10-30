@@ -1,10 +1,12 @@
 <script context="module">
 
-  import { pageList, url, options } from '../stores/blog-store.js';
+  import { servicesData, url, fetchOptions } from '../stores/global-store.js';
 
 	export function preload() {
 
-    if (!pageList.length) {
+    options
+
+    
     console.log("Fetching via about preload...")
 
       return this.fetch(url, options)
@@ -12,19 +14,17 @@
       .then(function(json) {
 
         pageList.update(() => {
-          var pages = json.data.pages;
-          return pages;
+          //var pages = json.data.pages;
+          //return pages;
         });
 
       })
       .catch(console.error); 
-    }   
-
-	}
+    } 
 </script>
 
 <script>
-  $: console.log($pageList)
+  //$: console.log($pageList)
 	
 </script>
 
