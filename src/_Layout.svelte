@@ -1,7 +1,7 @@
 <script>
   import { Route } from 'svelte-router-spa'
   export let currentRoute
-  const params = {}
+  export let params = {}
 
   
   import { url, options, sitewideData as sitewideData } from './stores/global-store'
@@ -18,20 +18,23 @@
 
   })
   .catch(console.error);
+  
+  import SiteHeader from './Components/SiteHeader.svelte';
+  import SiteFooter from './Components/SiteFooter.svelte';
 
 </script>
 
-<div class="app">
-  <section class="section">
-    <Route {currentRoute}  {params} />
-  </section>
-</div>
-
-
 {#if $sitewideData}
-  {#each $sitewideData.globalSet.navigationLinks as link}
-    <a href="{link.uri}">{link.linkTitle ? link.linkTitle : link.title}</a>
-  {/each}
+  <SiteHeader
+    links="{$sitewideData.globalSet.navigationLinks}"
+  />
+  <Route {currentRoute}  {params} />
+  <SiteFooter
+    links="{$sitewideData.globalSet.footerLinks}"
+    email="{$sitewideData.entry.email}"
+    tel="{$sitewideData.entry.tel}"
+    address="{$sitewideData.entry.address}"
+  />
 {:else}
-  <p>Loading...</p>
+  <p>Display a loading page here...</p>
 {/if}

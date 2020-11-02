@@ -13,11 +13,17 @@
    })
   .catch(console.error);
 
+  import TestimonialsCarousel from '../Components/TestimonialsCarousel.svelte'
+
 </script>
 
 
 {#if $pageData}
+
   <h1>Homepage</h1>
+  <TestimonialsCarousel/>
+  
 {:else}
-  <p>Loading...</p>
+  <img src="/img/loading.svg" alt="Loading...">
+
 {/if}
