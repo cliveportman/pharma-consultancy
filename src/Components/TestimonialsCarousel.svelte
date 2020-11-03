@@ -1,6 +1,5 @@
 <script>
-    import { sitewideData } from '../stores/global-store'  
-    console.log($sitewideData)
+    import { sitewideData } from '../stores/global-store'
 </script>
 
 <h1>Testimonials</h1>
