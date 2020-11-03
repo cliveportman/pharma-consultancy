@@ -24,11 +24,14 @@
 
 </script>
 
+
 {#if $sitewideData}
   <SiteHeader
     links="{$sitewideData.globalSet.navigationLinks}"
   />
+  <main>
   <Route {currentRoute}  {params} />
+  </main>
   <SiteFooter
     links="{$sitewideData.globalSet.footerLinks}"
     email="{$sitewideData.entry.email}"

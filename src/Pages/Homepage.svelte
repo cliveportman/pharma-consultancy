@@ -15,12 +15,32 @@
 
   import TestimonialsCarousel from '../Components/TestimonialsCarousel.svelte'
 
+  let width
+  let height
+  let videoUrl
+  $: getVideoUrl(width, height);
+  function getVideoUrl(width, height) {
+    if (width > height) {
+      videoUrl = 'https://s3.eu-west-1.amazonaws.com/cogentia/images/cogentia-landscape.mp4?mtime=20201103110405&focal=none'
+    } else {
+      videoUrl = 'https://s3.eu-west-1.amazonaws.com/cogentia/images/cogentia-portrait.mp4?mtime=20201103110409&focal=none'
+    }
+  }
+
 </script>
+<svelte:window bind:innerWidth="{width}" bind:innerHeight="{height}"/>
 
 
 {#if $pageData}
 
-  <h1>Homepage</h1>
+  <!--
+  <video
+    autoplay
+    src="{videoUrl}"
+  >
+  <track kind="captions">
+  </video>
+  -->
   <TestimonialsCarousel/>
   
 {:else}

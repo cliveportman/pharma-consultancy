@@ -2,7 +2,7 @@
 <script>
 
     export let links
-    let displayNav = true
+    let displayNav = false
 </script>
 
 <header class="sitewide">
@@ -21,7 +21,8 @@
 
 <style>
   header {
-    display: flex; justify-content: space-between; align-items: baseline;
+    display: flex; justify-content: space-between; align-items: flex-end;
+    width: 100%;
     margin: 2rem 2rem 2rem;
   }
   @media (min-width: 1024px) {
@@ -40,9 +41,9 @@
 
   }
   nav {
-    position: fixed;
+    position: fixed; z-index: 1;
     display: flex; justify-content: center; flex-direction: column;
-    left: 100%; right: -100%; top: 9rem; bottom: 0;
+    left: 100%; right: -100%; top: 8.6rem; bottom: 0;
     background: white;
     transition: left 0.2s;
   }
@@ -100,8 +101,8 @@
   button {
     position: relative;
     display: flex; justify-content: space-between; flex-direction: column;
-    width: 4.4rem;
-    padding: 1rem 0.5rem 1.4rem; margin: 0;
+    width: 4.4rem; height: 4.4rem;
+    padding: 1rem 0.5rem 1rem; margin: 0;
     background: none; border: none; -webkit-appearance: none;
     outline: none;
   }
@@ -111,13 +112,13 @@
     transition: all 0.2s;
   }
   button.open span:first-child {
-    position: relative; top: 1.2rem; right: 0.3rem;
+    position: relative; top: 1.1rem; right: 0.3rem;
     width: 120%;
     transform: rotate(45deg);
     
   }
   button.open span:nth-child(2) {
-    position: relative; bottom: 1.2rem; right: 0.3rem;
+    position: relative; bottom: 1.1rem; right: 0.3rem;
     width: 120%;
     transform: rotate(-45deg);
     
