@@ -9,7 +9,7 @@
     <h1><a href="/"><img src="/img/cogentia-logo.svg" alt="Cogentia"></a></h1>
     <nav class="{ displayNav ? 'open' : ''}">    
         {#each links as link}
-            <a href="{link.uri != '__HOME__' ? link.uri : '/' }">{link.linkTitle ? link.linkTitle : link.title}</a>
+            <a href="{link.uri != '__home__' ? link.uri : '/' }" on:click="{ () => { displayNav = !displayNav }}">{link.linkTitle ? link.linkTitle : link.title}</a>
         {/each}
     </nav>
     <button class="{ displayNav ? 'open' : ''}" on:click="{ () => { displayNav = !displayNav }}">
@@ -23,7 +23,7 @@
   header {
     display: flex; justify-content: space-between; align-items: flex-end;
     width: 100%;
-    margin: 2rem 2rem 2rem;
+    padding: 2rem 2rem 2rem;
   }
   @media (min-width: 1024px) {
     header { max-width: 1000px; margin: 2rem auto; padding: 0 2rem; }
