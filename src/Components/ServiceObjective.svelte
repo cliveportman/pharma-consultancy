@@ -17,20 +17,20 @@
 <style>
 .objective-holder {
   position: relative;
-  width: 100%; height: 40rem; overflow: hidden;
-  margin: 2rem 0;
+  width: 100%; height: calc(100vw + 4rem); overflow: hidden;
+  margin: 2rem 0 4rem;
 
 }
 .objective-circle {
 position: absolute; left: 50%;
 transform: translateX(-50%);
-display: flex; width: 40rem; height: 40rem;
+display: flex; width: calc(100vw + 4rem); height: calc(100vw + 4rem);
 border-radius: 50%;
 display: flex; flex-direction: column; justify-content: center;
 background: var(--colour1);
 }
 .objective-text {
-max-width: calc(100vw - 4rem); width: 24rem;
+max-width: calc(100vw - 8rem);
 margin: 0 auto;
 
 
@@ -38,7 +38,7 @@ margin: 0 auto;
 
 .objective-circle h3 {
 margin-bottom: 2rem;
-font-size: 1.2rem;
+font-size: 1.4rem;
 color: #fff;
 
 }
