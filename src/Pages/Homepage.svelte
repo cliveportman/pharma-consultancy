@@ -1,6 +1,9 @@
 <script>
+  import { onMount } from 'svelte'
   import { url, options, homepageData as pageData } from '../stores/global-store'
   import {query } from '../stores/graphql-queries/homepage-query'
+  import LoadingIcon from '../Components/LoadingIcon.svelte'
+  import AOS from 'aos'
 
   fetch(url, options(query))
   .then( (resp) => resp.json() )
@@ -12,6 +15,10 @@
 
    })
   .catch(console.error);
+
+  onMount(() => {
+    AOS.init();
+  });
 
   import TestimonialsCarousel from '../Components/TestimonialsCarousel.svelte'
 
@@ -32,18 +39,124 @@
 
 
 {#if $pageData}
+  
+  <section class="splash">
+    <h1>
+      <div>      
+          <span class="line1" data-aos="fade-left" data-aos-delay="1500">Evidence & Access</span>
+          <span class="line2" data-aos="fade-left" data-aos-delay="1800">Integrated</span>
+      </div>
+    </h1>
+    <video autoplay src="{videoUrl}">
+      <track kind="captions">
+    </video>
+  </section>
 
-  <!--
-  <video
-    autoplay
-    src="{videoUrl}"
-  >
-  <track kind="captions">
-  </video>
-  -->
-  <TestimonialsCarousel/>
+  <div class="container">
+    <section class="textblocks">
+      {#each $pageData.entry.threeTextBlocks as block, index}
+        <div class="textblock" data-aos="fade-up" data-aos-delay="{index * 150}" data-aos-offset="0">
+          <h2>{block.heading}</h2>
+          {@html block.text}
+        </div>
+      {/each}  
+    </section>
+    <TestimonialsCarousel/>
+  </div>
+  
   
 {:else}
-  <img src="/img/loading.svg" alt="Loading...">
-
+  <LoadingIcon/>  
 {/if}
+
+<style>
+
+  .splash {
+    position: relative;
+    width: 100%; height: 70vh; overflow: hidden;
+    margin-bottom: 4rem;
+  }
+  @media (min-width: 768px) {
+    .splash {
+      height: 80vh;
+    }
+  }
+  @media (min-width: 1024px) {
+    .splash {
+      height: 80vh;
+    }
+  }
+
+  h1 {
+    position: absolute; left: 0; top: 0; right: 0; bottom: 0; z-index: 2;
+    color: white;  text-transform: uppercase; font-size: 8vw; line-height: 1.05em;
+    display: flex; justify-content: center; flex-direction: column; align-items: center
+  }
+  @media (min-width: 1024px) {
+    h1 {
+      font-size: 7.6rem;
+    }
+  }
+  
+    span {
+      display: block;
+      
+    }
+    .line1 {
+      font-weight: 600;
+    }
+    .line2 {
+      font-weight: 100;
+    }
+
+  video {
+    position: absolute; bottom: 0; top: 0; left: 0; right: 0;
+    display: block; width: 100%;
+    object-fit: cover; object-position: center;
+  }
+  @media (min-width: 1024px) {
+    video {
+      height: 100%;
+    }
+  }
+
+
+  @keyframes slide-in-right {
+  0% {
+    -webkit-transform: translateX(1000px);
+            transform: translateX(1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.slide-in-right {
+	-webkit-animation: slide-in-right 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) 2000ms both;
+	        animation: slide-in-right 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) 2000ms both;
+}
+
+
+
+  .textblocks {
+    margin: 2rem 0 0;
+  }
+    .textblock {
+      margin-bottom: 4rem;
+    }
+    @media (min-width: 768px) {
+      .textblocks {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 2rem;
+        margin: 6rem 0;
+      }
+      .textblock {
+        margin-bottom: 0;
+      }
+    }
+
+</style>

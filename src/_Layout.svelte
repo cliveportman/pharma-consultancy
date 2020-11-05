@@ -14,22 +14,23 @@
     sitewideData.update(() => {
       return json.data
     });
-    console.log(json.data)
+    //console.log(json.data)
 
   })
   .catch(console.error);
   
-  import { fade, slide } from 'svelte/transition'
+  import { fade } from 'svelte/transition'
   
   import SiteHeader from './Components/SiteHeader.svelte';
   import SiteFooter from './Components/SiteFooter.svelte';
+  import LoadingScreen from './Components/LoadingScreen.svelte';
 
 </script>
 
 
 
 {#if $sitewideData}
-  <div class="page" in:fade="{{delay: 1000, duration: 300}}">
+  <div class="page" in:fade="{{delay: 500, duration: 300}}">
     <SiteHeader
       links="{$sitewideData.globalSet.navigationLinks}"
     />
@@ -44,25 +45,11 @@
     />
   </div>
 {:else}
-  <div class="loader" out:fade="{{delay: 1000, duration: 300}}">
-    <img src="/img/cogentia-logo.svg" alt="Cogentia" class="loader-logo">
-    <img src="/img/loading.svg" alt="Loading" class="loader-icon">
-  </div>
+  <LoadingScreen/>
 {/if}
 
+
 <style>
-  .loader {
-    position: fixed;
-    width: 100vw; height: 100vh;
-    display: flex; align-items: center; justify-content: center; flex-direction: column;
-  }
-  .loader .loader-logo {
-    width: 16rem;
-    margin-bottom: 2rem;
-  }
-  .loader .loader-icon {
-    width: 4.4rem; height: 4.4rem;
-  }
 
   .page {    
     display: flex;

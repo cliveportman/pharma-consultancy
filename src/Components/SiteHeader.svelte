@@ -88,7 +88,7 @@
 
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 1367px) {
     nav {
       padding-left: 15rem;
     }
