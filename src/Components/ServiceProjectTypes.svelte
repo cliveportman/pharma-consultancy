@@ -20,6 +20,9 @@
   h3 {
     color: var(--colour1);
   }
+  .project-types {
+    margin-bottom: 4rem;
+  }
 .project-types ul {
   list-style-type: none;
   margin: 0; padding: 0;
