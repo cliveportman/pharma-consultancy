@@ -33,6 +33,7 @@
   <div class="page" in:fade="{{delay: 500, duration: 300}}">
     <SiteHeader
       links="{$sitewideData.globalSet.navigationLinks}"
+      currentRoute="{currentRoute}"
     />
     <main>
     <Route {currentRoute}  {params} />
