@@ -1,15 +1,17 @@
 
 <script>
+    export let currentRoute
 
     export let links
     let displayNav = false
+    console.log(currentRoute)
 </script>
 
 <header class="sitewide">
     <h1><a href="/"><img src="/img/cogentia-logo.svg" alt="Cogentia"></a></h1>
     <nav class="{ displayNav ? 'open' : ''}">    
         {#each links as link}
-            <a href="{link.uri != '__home__' ? link.uri : '/' }" on:click="{ () => { displayNav = !displayNav }}">{link.linkTitle ? link.linkTitle : link.title}</a>
+            <a href="{link.uri != '__home__' ? link.uri : '/' }" on:click="{ () => { displayNav = !displayNav }}" class="{link.uri == currentRoute.name.replace('/', '') || (link.uri == '__home__' && currentRoute.name == '/') ? 'current': ''}">{link.linkTitle ? link.linkTitle : link.title}</a>
         {/each}
     </nav>
     <button class="{ displayNav ? 'open' : ''}" on:click="{ () => { displayNav = !displayNav }}">
@@ -32,7 +34,10 @@
     header { max-width: 1200px; margin: 2rem auto; padding: 0 2rem; }
   }
   h1 {
+    display: block;
     width: 70%; max-width: 19.6rem;
+    border: none;
+    margin: 0;
   }
   @media (min-width: 1024px) {
   h1 {
@@ -41,7 +46,7 @@
 
   }
   nav {
-    position: fixed; z-index: 1;
+    position: fixed; z-index: 3;
     display: flex; justify-content: center; flex-direction: column;
     left: 100%; right: -100%; top: 8.6rem; bottom: 0;
     background: white;
@@ -69,9 +74,12 @@
       padding-left: 4rem;
     }
       nav a {
-        display: block;
         font-size: 1.5rem; line-height: 2.5em;
-        text-decoration: none; font-weight: 700;
+        font-weight: 500;
+      }
+      nav a.current {
+        color: #1D1D1D;
+        border-bottom: 1px solid #BD1622;
       }
 
   }
@@ -83,7 +91,6 @@
     }
       nav a {
         font-size: 1.8rem; line-height: 2.5em;
-        text-decoration: none; font-weight: 700;
       }
 
   }
