@@ -4,14 +4,13 @@
 
     export let links
     let displayNav = false
-    console.log(currentRoute)
 </script>
 
 <header class="sitewide">
     <h1><a href="/"><img src="/img/cogentia-logo.svg" alt="Cogentia"></a></h1>
     <nav class="{ displayNav ? 'open' : ''}">    
         {#each links as link}
-            <a href="{link.uri != '__home__' ? link.uri : '/' }" on:click="{ () => { displayNav = !displayNav }}" class="{link.uri == currentRoute.name.replace('/', '') || (link.uri == '__home__' && currentRoute.name == '/') ? 'current': ''}">{link.linkTitle ? link.linkTitle : link.title}</a>
+            <a href="/{link.uri != '__home__' ? link.uri : '' }" on:click="{ () => { displayNav = !displayNav }}" class="{link.uri == currentRoute.name.replace('/', '') || (link.uri == '__home__' && currentRoute.name == '/') ? 'current': ''}">{link.linkTitle ? link.linkTitle : link.title}</a>
         {/each}
     </nav>
     <button class="{ displayNav ? 'open' : ''}" on:click="{ () => { displayNav = !displayNav }}">

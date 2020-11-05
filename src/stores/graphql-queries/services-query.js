@@ -11,9 +11,11 @@ query getServices {
   }
   entries(section:"services") {
       slug
+      uri
     ...on services_services_Entry {
       title
-      colour
+      colour1
+      colour2
       objective
       projectTypes {
         item
@@ -33,6 +35,7 @@ query getServices {
           projectDetailsFlags {
             ... on flags_Asset {
               url
+              title
             }
           }
           projectDetails {

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 92 86" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-miterlimit:10;">
+    <g transform="matrix(1.33333,0,0,1.33333,17.1785,44.0986)">
+        <path d="M0,-2.021C-0.116,0.704 0.237,3.495 1.117,6.244C5.123,18.76 18.518,25.659 31.034,21.653C43.551,17.646 50.45,4.251 46.443,-8.265C42.438,-20.782 29.043,-27.68 16.526,-23.674C13.899,-22.833 11.52,-21.579 9.437,-20.005" style="fill:none;fill-rule:nonzero;stroke:rgb(56,62,100);stroke-width:1.64px;"/>
+    </g>
+    <g transform="matrix(1.33333,0,0,1.33333,29.5816,47.1725)">
+        <path d="M0,-6.633C-0.581,-4.114 -0.53,-1.418 0.313,1.218C2.813,9.028 11.201,13.348 19.012,10.848C26.822,8.348 31.143,-0.039 28.643,-7.85C26.143,-15.66 17.755,-19.981 9.944,-17.481C7.309,-16.637 5.084,-15.113 3.371,-13.177" style="fill:none;fill-rule:nonzero;stroke:rgb(56,62,100);stroke-width:1.64px;"/>
+    </g>
+    <g transform="matrix(1.18538,0.610459,0.610459,-1.18538,17.7064,24.9904)">
+        <path d="M-2.089,-1.135L12.167,-1.135L4.682,-8.619L-9.574,-8.619L-2.089,-1.135Z" style="fill:none;fill-rule:nonzero;stroke:rgb(231,74,30);stroke-width:1.64px;stroke-linecap:round;stroke-linejoin:round;"/>
+    </g>
+    <g transform="matrix(1.18538,0.610459,0.610459,-1.18538,14.1511,21.9137)">
+        <path d="M1.338,-1.965L15.594,-1.965L8.11,5.52L-6.147,5.52L1.338,-1.965Z" style="fill:none;fill-rule:nonzero;stroke:rgb(231,74,30);stroke-width:1.64px;stroke-linecap:round;stroke-linejoin:round;"/>
+    </g>
+    <g transform="matrix(-1.18535,-0.610516,-0.610516,1.18535,27.6522,24.3728)">
+        <path d="M-20.469,4.962L1.203,4.961" style="fill:none;fill-rule:nonzero;stroke:rgb(231,74,30);stroke-width:1.64px;stroke-linecap:round;stroke-linejoin:round;"/>
+    </g>
+    <g transform="matrix(1.33333,0,0,1.33333,40.9617,42.8897)">
+        <path d="M0,-0.208C-0.012,0.427 0.073,1.072 0.277,1.709C1.277,4.834 4.632,6.562 7.756,5.562C10.88,4.562 12.608,1.206 11.609,-1.918C10.609,-5.042 7.253,-6.77 4.129,-5.77C3.492,-5.566 2.917,-5.26 2.408,-4.882" style="fill:none;fill-rule:nonzero;stroke:rgb(56,62,100);stroke-width:1.64px;"/>
+    </g>
+</svg>
