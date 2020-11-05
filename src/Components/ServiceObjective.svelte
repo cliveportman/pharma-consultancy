@@ -30,7 +30,7 @@ display: flex; flex-direction: column; justify-content: center;
 background: var(--colour1);
 }
 .objective-text {
-max-width: calc(100vw - 4rem);
+max-width: calc(100vw - 4rem); width: 24rem;
 margin: 0 auto;
 
 
