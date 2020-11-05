@@ -3,7 +3,7 @@
     import Carousel from '@beyonk/svelte-carousel'
 </script>
 
-<h2>What our clients say</h2>
+<h2>What our clients say <img src="/img/cogentia-logo-white.svg" alt="Cogentia"></h2>
 
 <section>
 <Carousel
@@ -36,10 +36,21 @@
     }
   }
     h2 {
-        display: block; height: 6.2rem;
-        padding: 1.2rem 2rem 0;
-        color: white; font-size: 1.6rem; line-height: 5rem;
-        background: #BD1622;
+      position: relative;
+      display: block; height: 6.2rem;
+      padding: 1.2rem 2rem 0;
+      color: white; font-size: 1.6rem; line-height: 5rem; text-transform: uppercase;
+      background: #BD1622;
+    }
+      h2 img {
+        display: none;
+      }
+    @media (min-width: 768px) {
+      h2 img {
+        display: block; width: 10.5rem;
+        position: absolute; right: 2rem; bottom: 1.25rem;
+
+      }
     }
 
     .slide-content {
