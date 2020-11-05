@@ -17,19 +17,21 @@
    })
   .catch(console.error);
 
-  const layers = [1, 2, 3, 4];
+  const layers = [0, 1, 2, 3];
 
   let y;
 
-  onMount(() => {
-    AOS.init();
-  });
+  // onMount(() => {
+  //   AOS.init();
+  // });
 
 </script>
 
 <svelte:window bind:scrollY={y}/>
 
 {#if $pageData}
+
+  <h1>About</h1>
 
   <div class="parallax-container">
     {#each layers as layer}
@@ -94,8 +96,19 @@
   .copy {
     width: 66.6666%; margin: 0 auto 6rem;
   }
+}
 
+@media (min-width: 1024px) {
+	.parallax-container {
+		width: 964px;
+	}
+}
 
+@media (min-width: 1367px) {
+	.parallax-container {
+		width: 1140px;
+    margin-bottom: 4rem;
+	}
 }
   
   </style>
