@@ -16,9 +16,9 @@
    })
   .catch(console.error);
 
-  onMount(() => {
-    AOS.init();
-  });
+  // onMount(() => {
+  //   AOS.init();
+  // });
 
   import TestimonialsCarousel from '../Components/TestimonialsCarousel.svelte'
 
@@ -90,7 +90,8 @@
   h1 {
     position: absolute; left: 0; top: 0; right: 0; bottom: 0; z-index: 2;
     color: white;  text-transform: uppercase; font-size: 8vw; line-height: 1.05em;
-    display: flex; justify-content: center; flex-direction: column; align-items: center
+    display: flex; justify-content: center; flex-direction: column; align-items: center;
+    border: none;
   }
   @media (min-width: 1024px) {
     h1 {
