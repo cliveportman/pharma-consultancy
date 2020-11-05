@@ -7,6 +7,7 @@
 </div>
 
 {#if caseStudy.outcomeDetails}
+<div class="red">
   <h4>Outcomes</h4>
   {#each caseStudy.outcomeDetails as block}
     <h5>{block.heading}</h5>
@@ -16,4 +17,5 @@
       {/each}
     </ul>
   {/each}
+</div>
 {/if}

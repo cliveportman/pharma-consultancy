@@ -35,7 +35,7 @@
       <img src="/img/icons/quotes.svg" alt="">
     </div>
     <h4>Read full case study</h4>
-    <button>+</button>
+    <button>{visible ? '−' : '+'}</button>
   </div>
 
   {#if visible}
@@ -122,6 +122,7 @@
     }
 
     .casestudy-detail {
+      padding-bottom: 2rem;
     }
 
 
@@ -138,7 +139,12 @@
   display: inline-block;
   padding: 1rem; margin: 0 0 1.5rem;;
   color: #fff; font-size: 1.6rem; line-height: 1em;
+} 
+:global(.casestudy-detail .blue h5) {
   background: #5C6A99;
+}
+:global(.casestudy-detail .red h5) {
+  background: #E74A1E;
 } 
 :global(.casestudy-detail ul) {
   margin-bottom: 2rem;
@@ -153,9 +159,15 @@
   content: "";
   float: left;
   display: block; width: 0; height: 0;
-  margin: 0.2rem 2rem 0 0;
+  margin: 0.2rem 0.5rem 0 0;
   border-top: 5px solid transparent; border-bottom: 5px solid transparent;  
+  
+}
+:global(.casestudy-detail .blue span.triangle) {
   border-left: 10px solid #5C6A99;
+}
+:global(.casestudy-detail .red span.triangle) {
+  border-left: 10px solid #E74A1E;
 }
 :global(.casestudy-detail span.text) {
   float: left;
