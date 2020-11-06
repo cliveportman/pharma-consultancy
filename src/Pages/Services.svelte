@@ -60,6 +60,12 @@
       {@html $pageData.entry.paragraph2}
       {@html $pageData.entry.paragraph1}
     </div>
+  
+    <div class="services-paragraphs">
+      <div class="services-paragraph1">{@html $pageData.entry.paragraph1}</div>
+      <div class="services-paragraph2">{@html $pageData.entry.paragraph2}</div>
+    </div>
+
   </div>
 
     <div class="services">
@@ -102,6 +108,21 @@
     .intro h2 br {
       display: none;
     }
+    :global(.intro p) {
+      display: none;
+    }
+  }
+  @media (min-width: 1024px) {
+    .intro {
+      padding-left: 8.3333%; padding-right: 8.3333%;
+    }
+    .intro h2 br {
+      display: none;
+    }
+  }
+
+  .services-paragraphs {
+    display: none;
   }
 
   :global(.service-toggle) {
@@ -126,6 +147,24 @@
   }
 
   @media (min-width: 768px) {
+
+    .services-paragraphs {
+      display: block; 
+    }
+    :global(.services-paragraphs p) {
+        font-size: 1.4rem;
+
+    }
+      .services-paragraph1 {
+        width: calc(28rem - 8.3333%);
+        position: absolute; right: calc(8.3333%); top: 6rem;
+      }
+      .services-paragraph2 {
+        width: 17rem;
+        position: absolute;
+        left: calc(16.6666%);
+        top: 23rem;
+      }
 
     :global(.service-toggle) {
       position: relative;
