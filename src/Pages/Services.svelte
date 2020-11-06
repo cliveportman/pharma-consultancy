@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte'
   import { Navigate } from 'svelte-router-spa'
-  import {slide} from 'svelte/transition'
+  import {slide, fade} from 'svelte/transition'
   import { url, options, servicesData as pageData, servicesData } from '../stores/global-store'
   import { query } from '../stores/graphql-queries/services-query'
   import LoadingIcon from '../Components/LoadingIcon.svelte'
@@ -10,6 +10,7 @@
   import ServiceObjective from '../Components/ServiceObjective.svelte'
   import ServiceProjectTypes from '../Components/ServiceProjectTypes.svelte'
   import ServiceCaseStudy from '../Components/ServiceCaseStudy.svelte'
+  import TestimonialsCarousel from '../Components/TestimonialsCarousel.svelte'
 
   export let currentRoute
   export let params = {}
@@ -55,7 +56,7 @@
     
   <div class="container">
     <div class="intro">
-      <h2>Evidence & Access<br>Integrated</h2>
+      <h2>Evidence & Access<br> Integrated</h2>
       {@html $pageData.entry.paragraph2}
       {@html $pageData.entry.paragraph1}
     </div>
@@ -66,13 +67,13 @@
 
         <div class="service" style="--colour1: {service.colour1}; --colour2: {service.colour2};">
           
-          <Navigate to="{currentRoute.path == '/' + service.uri ? '/services' : '/' + service.uri}" styles="service-toggle">
+          <Navigate to="{currentRoute.path == '/' + service.uri ? '/services' : '/' + service.uri}" styles="service-toggle {currentRoute.path != '/services' && currentRoute.path != '/' + service.uri ? 'outline' : ''}">
             <button>{currentRoute.path == '/' + service.uri ? '−' : '+'}</button>
             <h2>{splitTitle(service.title)[0].toUpperCase()} {splitTitle(service.title)[1]}</h2>          
           </Navigate>
 
           {#if currentRoute.path == '/' + service.uri}
-            <div class="service-detail" transition:slide>
+            <div class="service-detail" transition:slide="{{ duration: 300 }}">
               <ServiceObjective service="{service}"/>
               <ServiceProjectTypes service="{service}"/>
               <ServiceCaseStudy service="{service}"/>
@@ -85,6 +86,10 @@
 
     </div>
 
+    <div class="container">
+      <TestimonialsCarousel/>
+    </div>
+
 {:else}
   <LoadingIcon/> 
 {/if}
@@ -92,6 +97,11 @@
 <style>
   .intro h2 {
     color: #1d1d1d; text-transform: uppercase;
+  }
+  @media (min-width: 768px) {
+    .intro h2 br {
+      display: none;
+    }
   }
 
   :global(.service-toggle) {
@@ -109,16 +119,73 @@
     background: var(--colour1);
   }
   :global(.service-toggle h2) {
+    width: calc(100% - 5.2rem);
     margin: 0; padding: 0.5rem 0 0;
     line-height: 1em; font-size: 1.6rem; font-weight: 500;
+    color: var(--colour1);
+  }
+
+  @media (min-width: 768px) {
+
+    :global(.service-toggle) {
+      position: relative;
+      width: 15.4rem; height: 15.4rem;
+      padding: 0;
+      
+    }
+    :global(.service-toggle button) {
+      width: 15.4rem; height: 15.4rem;
+      margin: 0; padding: 7rem 0 0;
+      border: 1px solid var(--colour1);
+      transition: all 0.3s;
+    }
+    :global(.service-toggle.outline button) {
+      background: none;
+      color: var(--colour1);
+    }
+    :global(.service-toggle h2) {
+      position: absolute; top: 6rem;
+      width: 100%;
+      padding: 0 2rem;
+      text-align: center; font-weight: 300;
+      color: var(--colour2);
+    }
+    :global(.service-toggle.outline h2) {
+      color: var(--colour1);
+    }
+    :global(.service:nth-child(1) .service-toggle) {
+      position: absolute; left: 2rem; top: 0;
+    }
+    :global(.service:nth-child(2) .service-toggle) {
+      position: absolute; left: 16.1rem; top: 0;
+    }
+    :global(.service:nth-child(3) .service-toggle) {
+      position: absolute; left: 30.2rem; top: 0;
+    }
+    :global(.service:nth-child(4) .service-toggle) {
+      position: absolute; left: 30.2rem; top: 14.1rem;
+    }
+    :global(.service:nth-child(5) .service-toggle) {
+      position: absolute; left: 44.3rem; top: 14.1rem;
+    }
+    :global(.service:nth-child(6) .service-toggle) {
+      position: absolute; left: 58.4rem; top: 14.1rem;
+    }
   }
 
   .services {
     margin-bottom: 4rem;
   }
+  @media (min-width: 768px) {
+    .services {
+      position: relative;
+      width: 760px;
+      margin: 0 auto 6rem; padding: 26.5rem 2rem 0;
+    }
+  }
   @media (min-width: 1024px) {
     .services {
-      margin-bottom: 6rem;
+      width: 83.3333%;
     }
   }
 
@@ -131,9 +198,6 @@
 
 
 
-h2 {
-  color: var(--colour1);
-}
 
 
 </style>

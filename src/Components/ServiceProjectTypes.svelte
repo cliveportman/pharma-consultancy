@@ -46,4 +46,17 @@
   float: left;
   max-width: calc(100% - 3rem);
 }
+
+@media (min-width: 768px) {
+  .project-types h3 {
+    width: 38rem;
+    margin-left: auto; margin-right: auto;
+  }
+  .project-types ul {
+    width: 38rem;
+    margin: 0 auto;
+  }
+  .project-types li .border {
+  }
+}
 </style>

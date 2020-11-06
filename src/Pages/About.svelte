@@ -4,6 +4,7 @@
   import {query } from '../stores/graphql-queries/about-query'
   import LoadingIcon from '../Components/LoadingIcon.svelte';
   import AOS from 'aos'
+  import TestimonialsCarousel from '../Components/TestimonialsCarousel.svelte'
 
   fetch(url, options(query))
   .then( (resp) => resp.json() )
@@ -47,6 +48,10 @@
     <div class="copy" data-aos="fade-up">
       {@html $pageData.entry.copy}
     </div>    
+  </div>
+
+  <div class="container">
+    <TestimonialsCarousel/>
   </div>
 
 {:else}

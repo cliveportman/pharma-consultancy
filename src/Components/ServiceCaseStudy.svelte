@@ -75,6 +75,16 @@
     padding: 2rem 0 0;
     border-bottom: 1px solid #5C6A99;
   }
+  @media (min-width: 768px) {
+    .summary {
+      padding-left: 8.3333%; padding-right: 8.3333%;
+    }
+  }
+  @media (min-width: 1024px) {
+    .summary {
+      padding-left: 8.3333%; padding-right: 50%;
+    }
+  }
 
   .casestudy-toggle {
     display: flex; justify-content: space-between; flex-wrap: wrap; align-items: center;
@@ -85,10 +95,15 @@
       text-align: center;
       margin: 0 0 2rem;
     }
-
       .icons img {
         height: 4.4rem;
       }
+    @media (min-width: 768px) {
+      .icons {
+        width: auto;
+        margin: 2rem 0 2rem;
+      }
+    }
     .casestudy-toggle h4 {
       margin: 0;
       color: #383E64; font-size: 1.6rem; font-weight: 500; text-transform: uppercase;
@@ -121,6 +136,18 @@
 
     }
 
+  @media (min-width: 768px) {
+    .morecasestudies {
+      padding: 2.3rem 8.3333%;
+      text-align: right;
+      font-size: 1.6rem;
+    }
+    .morecasestudies br {
+      display: none;
+    }
+
+  }
+
     .casestudy-detail {
       padding-bottom: 2rem;
     }
@@ -137,7 +164,7 @@
 } 
 :global(.casestudy-detail h5) {
   display: inline-block;
-  padding: 1rem; margin: 0 0 1.5rem;;
+  padding: 1rem 2rem 1rem 1rem; margin: 0 0 1.5rem;;
   color: #fff; font-size: 1.6rem; line-height: 1em;
 } 
 :global(.casestudy-detail .blue h5) {
@@ -172,6 +199,12 @@
 :global(.casestudy-detail span.text) {
   float: left;
   max-width: calc(100% - 3rem);
+}
+
+@media (min-width: 768px) {
+  :global(.casestudy-detail .icon) {
+    padding-top: 2rem; height: 8rem;
+  } 
 }
 </style>
 

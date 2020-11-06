@@ -4,6 +4,7 @@
   import {query } from '../stores/graphql-queries/homepage-query'
   import LoadingIcon from '../Components/LoadingIcon.svelte'
   import AOS from 'aos'
+  import TestimonialsCarousel from '../Components/TestimonialsCarousel.svelte'
 
   fetch(url, options(query))
   .then( (resp) => resp.json() )
@@ -20,7 +21,6 @@
   //   AOS.init();
   // });
 
-  import TestimonialsCarousel from '../Components/TestimonialsCarousel.svelte'
 
   let width
   let height
