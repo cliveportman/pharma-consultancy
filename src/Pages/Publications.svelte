@@ -1,10 +1,13 @@
 <script>
   import { url, options, publicationsData as pageData } from '../stores/global-store'
   import {query } from '../stores/graphql-queries/publications-query'
+  import LoadingIcon from '../Components/LoadingIcon.svelte'
+  import TestimonialsCarousel from '../Components/TestimonialsCarousel.svelte'
 
   fetch(url, options(query))
   .then( (resp) => resp.json() )
   .then(function(json) {
+    console.log(json.data)
 
     pageData.update(() => {
       return json.data
@@ -18,6 +21,80 @@
 
 {#if $pageData}
   <h1>Publications</h1>
+
+  <div class="container">
+
+    <div class="publications">
+      {#each $pageData.entries as publication}
+        <div class="publication">
+          <header>
+            <h6>Publication</h6>
+            <h3>{publication.title}</h3>
+          </header>
+          <div class="summary">
+            {@html publication.summary}
+            <a href="{publication.pdf[0].url}" class="download">Download PDF</a>
+          </div>
+        </div>
+      {/each}
+    </div>
+    <TestimonialsCarousel/>
+  </div>
 {:else}
-  <p>Loading...</p>
+  <LoadingIcon/> 
 {/if}
+
+<style>
+
+
+@media (min-width: 768px) {
+  
+.publications {
+  width: 83.3333%; margin: 0 auto 6rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 2rem;
+}
+}
+  .publication{
+    margin-bottom: 2rem;
+  }
+  header {
+    padding: 1.5rem 2rem;
+    background: #E0EAED;
+  }
+    h6 {
+      display: block;
+      margin: 0 0 0.5rem;
+      font-size: 1.2rem; line-height: 1.2em;;
+      text-transform: uppercase; color: #595958;
+    }
+    h3 {
+      margin: 0;
+      font-size: 1.6rem;
+      color: #1D1D1D;
+    }
+    .publication .summary{
+      padding: 2rem 2rem;
+      background: linear-gradient(#F3F2ED, #ffffff);      
+    }
+
+    .download {
+      display: block;
+      margin-top: -1rem;
+      color: #BD1622; font-size: 1.4rem; text-transform: uppercase; text-decoration: none;
+      text-align: right; font-weight: 700;
+
+    }
+    .download:focus, .download:hover, .download:active {
+      text-decoration: underline;
+    }
+    .download:after {
+      content: "";
+      display: inline-block; width: 3rem; height: 3rem;
+      margin-left: 2rem;
+      border-top: 1px solid #5C6A99; border-right: 1px solid #5C6A99;
+      transform: rotate(135deg); 
+
+    }
+</style>
