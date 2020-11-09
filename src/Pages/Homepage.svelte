@@ -6,7 +6,10 @@
   import AOS from 'aos'
   import TestimonialsCarousel from '../Components/TestimonialsCarousel.svelte'
 
-  fetch(url, options(query))
+  export let currentRoute  
+  let token = currentRoute.queryParams.token
+
+  fetch(url + '?token='+token, options(query))
   .then( (resp) => resp.json() )
   .then(function(json) {
 

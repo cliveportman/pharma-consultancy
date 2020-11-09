@@ -27,8 +27,6 @@
 
 </script>
 
-
-
 {#if $sitewideData}
   <div class="page" in:fade="{{delay: 500, duration: 300}}">
     <SiteHeader

@@ -4,7 +4,10 @@
   import LoadingIcon from '../Components/LoadingIcon.svelte'
   import TestimonialsCarousel from '../Components/TestimonialsCarousel.svelte'
 
-  fetch(url, options(query))
+  export let currentRoute  
+  let token = currentRoute.queryParams.token
+
+  fetch(url + '?token='+token, options(query))
   .then( (resp) => resp.json() )
   .then(function(json) {
     console.log(json.data)
@@ -61,9 +64,11 @@
 
 <style>
   .introduction {
+    margin: 4rem 0;
   }
   @media (min-width: 768px) {
     .introduction {
+      margin: 6rem 0;
       padding-left: 8.3333%; padding-right: 8.3333%;
     }
   }
@@ -91,6 +96,10 @@
       border-left: 1px solid #ccc;
 
     }
+  }
+
+  h2 {
+    color: #1d1d1d; text-transform: uppercase;
   }
 
   header {

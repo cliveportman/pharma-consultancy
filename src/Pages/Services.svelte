@@ -12,12 +12,11 @@
   import ServiceCaseStudy from '../Components/ServiceCaseStudy.svelte'
   import TestimonialsCarousel from '../Components/TestimonialsCarousel.svelte'
 
-  export let currentRoute
-  export let params = {}
-
   let visibleService
+  export let currentRoute  
+  let token = currentRoute.queryParams.token
 
-  fetch(url, options(query))
+  fetch(url + '?token='+token, options(query))
   .then( (resp) => resp.json() )
   .then(function(json) {
 
