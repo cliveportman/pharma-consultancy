@@ -177,7 +177,10 @@
 }
 :global(.casestudy-detail .red h5) {
   background: #E74A1E;
-} 
+}
+:global(.casestudy-detail p) {
+  font-size: 1.6rem; line-height: 1.2em;
+}
 :global(.casestudy-detail ul) {
   margin-bottom: 2rem;
 } 
