@@ -49,6 +49,7 @@ query getServices {
           solutionDetails {
             ... on solutionDetails_block_BlockType {
               heading
+              copy
               bullets {
                 item
               }

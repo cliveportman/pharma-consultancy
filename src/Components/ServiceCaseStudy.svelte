@@ -182,23 +182,28 @@
   margin-bottom: 2rem;
 } 
 :global(.casestudy-detail li) {
+  position: relative;
   margin-bottom: 1rem;
+  padding-left: 2rem;
   list-style-type: none;
-  font-size: 1.6rem; line-height: 1.1em;
-}   
+  font-size: 1.6rem; line-height: 1.2em;
+}
+:global(.casestudy-detail li ul) { 
+  margin-top: 1rem;
+}
 
-:global(.casestudy-detail span.triangle) {
+:global(.casestudy-detail li:before) {
   content: "";
-  float: left;
+  position: absolute; left: 0; top: 0.25rem;
   display: block; width: 0; height: 0;
   margin: 0.2rem 0.5rem 0 0;
   border-top: 5px solid transparent; border-bottom: 5px solid transparent;  
   
 }
-:global(.casestudy-detail .blue span.triangle) {
+:global(.casestudy-detail .blue li:before) {
   border-left: 10px solid #5C6A99;
 }
-:global(.casestudy-detail .red span.triangle) {
+:global(.casestudy-detail .red li:before) {
   border-left: 10px solid #E74A1E;
 }
 :global(.casestudy-detail span.text) {
