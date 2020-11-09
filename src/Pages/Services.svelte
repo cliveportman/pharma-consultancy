@@ -212,6 +212,104 @@
     }
   }
 
+@media (min-width: 1024px) {
+  :global(.services-paragraphs p) {
+      font-size: 1.6rem;
+
+  }
+    .services-paragraph1 {
+      width: calc(38rem - 8.3333%);
+      right: calc(8.3333%); top: 6rem;
+    }
+    .services-paragraph2 {
+      width: 22rem;
+      left: calc(16.6666%);
+      top: 26rem;
+    }
+
+  :global(.service-toggle) {
+    position: relative;
+    width: 17.3rem; height: 17.3rem;
+    padding: 0;
+    
+  }
+  :global(.service-toggle button) {
+    width: 17.3rem; height: 17.3rem;
+    padding: 7rem 0 0;
+  }
+  :global(.service-toggle h2) {
+    top: 7rem;
+    font-size: 1.8rem;
+  }
+  :global(.service:nth-child(1) .service-toggle) {
+    left: 2rem;
+  }
+  :global(.service:nth-child(2) .service-toggle) {
+    left: 17.5rem;
+  }
+  :global(.service:nth-child(3) .service-toggle) {
+    left: 33rem;
+  }
+  :global(.service:nth-child(4) .service-toggle) {
+    left: 33rem; top: 16rem;
+  }
+  :global(.service:nth-child(5) .service-toggle) {
+    left: 48.5rem; top: 16rem;
+  }
+  :global(.service:nth-child(6) .service-toggle) {
+    left: 64rem; top: 16rem;
+  }
+}
+
+@media (min-width: 1367px) {
+  :global(.services-paragraphs p) {
+      font-size: 1.6rem;
+
+  }
+    .services-paragraph1 {
+      width: calc(46rem - 8.3333%);
+      right: calc(8.3333%); top: 8rem;
+    }
+    .services-paragraph2 {
+      width: 22rem;
+      left: calc(16.6666%);
+      top: 28rem;
+    }
+
+  :global(.service-toggle) {
+    position: relative;
+    width: 20.75rem; height: 20.75rem;
+    padding: 0;
+    
+  }
+  :global(.service-toggle button) {
+    width: 20.75rem; height: 20.75rem;
+    padding: 7rem 0 0;
+  }
+  :global(.service-toggle h2) {
+    top: 7rem;
+    font-size: 1.8rem;
+  }
+  :global(.service:nth-child(1) .service-toggle) {
+    left: 2rem;
+  }
+  :global(.service:nth-child(2) .service-toggle) {
+    left: 20.75rem;
+  }
+  :global(.service:nth-child(3) .service-toggle) {
+    left: 39.5rem;
+  }
+  :global(.service:nth-child(4) .service-toggle) {
+    left: 39.5rem; top: 18.75rem;
+  }
+  :global(.service:nth-child(5) .service-toggle) {
+    left: 58.25rem; top: 18.75rem;
+  }
+  :global(.service:nth-child(6) .service-toggle) {
+    left: 77rem; top: 18.75rem;
+  }
+}
+
   .services {
     margin-bottom: 4rem;
   }
@@ -224,7 +322,14 @@
   }
   @media (min-width: 1024px) {
     .services {
-      width: 83.3333%;
+      width: 83.3333rem;
+      padding: 30rem 2rem 0;
+    }
+  }
+  @media (min-width: 1367px) {
+    .services {
+      width: 100rem;
+      padding: 35.5rem 2rem 0;
     }
   }
 

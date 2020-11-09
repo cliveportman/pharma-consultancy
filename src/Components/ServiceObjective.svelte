@@ -62,4 +62,14 @@ color: var(--colour2);
   }
 }
 
+@media (min-width: 1024px) {
+  .objective-circle {
+    width: 48rem; height: 48rem;
+  }
+  .objective-text {
+    max-width: 66.6666%;
+    margin: 0 auto;
+  }
+}
+
 </style>

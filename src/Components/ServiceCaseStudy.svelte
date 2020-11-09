@@ -16,12 +16,13 @@
   }
 </script>
 
-<header class="container">
-  <h6>Case study</h6>
-  <h3>{caseStudy.title}</h3>
-</header>
+<div class="casestudy">
 
-<div class="container">
+  <header class="">
+    <h6>Case study</h6>
+    <h3>{caseStudy.title}</h3>
+  </header>
+
   <div class="summary">
     {@html caseStudy.summary}
   </div>
@@ -55,8 +56,12 @@
 </div>
 
 <style>
+
+  .casestudy {
+    padding: 0 2rem;
+  }
   header {
-    padding-top: 1.5rem; padding-bottom: 1.5rem;
+    padding: 1.5rem 2rem;
     background: #383E64;
   }
     h6 {
