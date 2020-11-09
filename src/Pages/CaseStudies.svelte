@@ -84,7 +84,7 @@
       display: block;
       margin-top: -1rem;
       color: #BD1622; font-size: 1.4rem; text-transform: uppercase; text-decoration: none;
-      text-align: right; font-weight: 500;
+      text-align: right; font-weight: 700;
 
     }
     .download:focus, .download:hover, .download:active {
