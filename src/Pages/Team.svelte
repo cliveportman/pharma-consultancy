@@ -56,7 +56,7 @@
 
   </div>
 {:else}
-  <p>Loading...</p>
+  <LoadingIcon/> 
 {/if}
 
 <style>
