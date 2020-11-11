@@ -5,6 +5,7 @@ import Services from './Pages/Services.svelte'
 import CaseStudies from './Pages/CaseStudies.svelte'
 import Team from './Pages/Team.svelte'
 import Publications from './Pages/Publications.svelte'
+import Careers from './Pages/Careers.svelte'
 import Contact from './Pages/Contact.svelte'
 import Page from './Pages/_Page.svelte'
  
@@ -27,6 +28,7 @@ const routes = [
   { name: 'case-studies', layout: Layout, component: CaseStudies },
   { name: 'team', layout: Layout, component: Team },
   { name: 'publications', layout: Layout, component: Publications },
+  { name: 'careers', layout: Layout, component: Careers },
   { name: 'contact', layout: Layout, component: Contact },
   { name: 'p/:slug', layout: Layout, component: Page },
   

@@ -1,0 +1,100 @@
+<script>
+  import { url, options, careersData as pageData } from '../stores/global-store'
+  import { query } from '../stores/graphql-queries/careers-query'
+  import LoadingIcon from '../Components/LoadingIcon.svelte'
+  import TestimonialsCarousel from '../Components/TestimonialsCarousel.svelte'
+
+  export let currentRoute  
+  let token = currentRoute.queryParams.token
+
+  fetch(url + '?token='+token, options(query))
+  .then( (resp) => resp.json() )
+  .then(function(json) {
+
+    console.log(json.data)
+
+    pageData.update(() => {
+      return json.data
+    });
+
+   })
+  .catch(console.error);
+
+</script>
+
+
+{#if $pageData}
+  <h1>Careers</h1>
+
+  <div class="container">
+
+    <div class="vacancies">
+      <div class="introduction">
+        {@html $pageData.entry.introduction}
+      </div>
+      {#each $pageData.entry.vacancies as vacancy}
+        <div class="vacancy">
+          <h2>{vacancy.jobTitle}</h2>
+          <div class="copy">
+            <div class="summary">
+              <p>Location: {vacancy.location}</p>
+                {#if vacancy.shortSummary}{@html vacancy.shortSummary}{/if}
+            </div>
+            <a href="{vacancy.pdf[0].url}" class="download">Download full details (PDF)</a>
+          </div>
+        </div>
+      {/each}
+      {@html $pageData.entry.additionalCopy}
+    </div>
+    <TestimonialsCarousel/>
+  </div>
+{:else}
+  <LoadingIcon/> 
+{/if}
+
+<style>
+
+
+@media (min-width: 768px) {
+  
+.vacancies {
+  width: 83.3333%; margin: 0 auto 6rem;
+}
+}
+
+.introduction {
+  margin-bottom: 4rem;;
+}
+  .vacancy{
+    margin-bottom: 4rem;
+  }
+    h2 {
+      margin-bottom: 1rem;
+    }
+    :global(.vacancy p) {   
+      margin-bottom: 1rem;
+    }
+
+    .copy {
+      display: flex; justify-content: space-between;
+    }
+
+    .download {
+      display: block;
+      margin-top: -1rem;
+      color: #BD1622; font-size: 1.4rem; text-transform: uppercase; text-decoration: none;
+      text-align: right; font-weight: 700;
+
+    }
+    .download:focus, .download:hover, .download:active {
+      text-decoration: underline;
+    }
+    .download:after {
+      content: "";
+      display: inline-block; width: 3rem; height: 3rem;
+      margin-left: 2rem;
+      border-top: 1px solid #5C6A99; border-right: 1px solid #5C6A99;
+      transform: rotate(135deg);
+
+    }
+</style>
