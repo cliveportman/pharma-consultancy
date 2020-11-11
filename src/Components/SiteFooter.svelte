@@ -31,7 +31,7 @@
                 {/each}
             </nav>
         </div>
-        <div class="col">
+        <div class="col credits">
             <p class="credits">
                 © Cogentia 2020	–	All rights reserved.<br>
                 <a href="https://www.specialdesignstudio.co.uk">Site by Special Design Studio</a>
@@ -56,14 +56,29 @@ footer {
 
         @media (min-width: 768px) {
             .contacts {
-                display: flex; justify-content: flex-start; align-items: center;
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              column-gap: 2rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .contacts {
+              display: grid;
+              grid-template-columns: repeat(4, 1fr);
+              column-gap: 2rem;
             }
         }
 
         .contacts a {
             width: 100%; height: 4.4rem;
             display: flex; justify-content: flex-start; align-items: center;
-            line-height: 4.4rem; font-size: 1.8rem; text-decoration: none;
+            line-height: 4.4rem; font-size: 1.6rem; text-decoration: none;
+        }
+        @media (min-width: 1367px) {
+          .contacts a {
+            font-size: 1.8rem;
+          }
         }
             .contacts a.tel img {
                 display: block; height: 2.4rem;
@@ -87,7 +102,6 @@ footer {
         @media (min-width: 768px) {
             .contacts a {
                 width: auto;
-                margin-right: 5rem;
             }
             .contacts a.linkedin {
                 position: static; right: auto; bottom: auto;
@@ -97,8 +111,14 @@ footer {
                 position: absolute; right: 0;
                 display: block;
                 margin-right: 0;
-                line-height: 4.4rem; font-size: 1.8rem; text-decoration: none;
+                line-height: 4.4rem; font-size: 1.6rem; text-decoration: none;
+                
             }
+        }
+        @media (min-width: 1367px) {
+          .contacts .homelink {
+            font-size: 1.8rem;
+          }
         }
 
     p, nav a {
@@ -123,7 +143,9 @@ footer {
 
         @media (min-width: 768px) {
             .footer-bottom {
-                display: flex; justify-content: space-between; align-items: flex-start;
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              column-gap: 2rem;
             }
 
             p, nav a {
@@ -135,5 +157,19 @@ footer {
             p.credits {
                 text-align: right;
             }
+            div.credits {
+              grid-column: 1/4;
+            }
         }
+
+@media (min-width: 1024px) {
+    .footer-bottom {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      column-gap: 2rem;
+    }
+            div.credits {
+              grid-column: 4/4;
+            }
+  }
 </style>

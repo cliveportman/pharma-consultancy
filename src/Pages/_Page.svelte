@@ -35,7 +35,7 @@
 
 
     <div class="container">
-      
+
       <div class="header">
         <h1 class="show">{page.title}</h1>
       </div>
@@ -53,13 +53,14 @@
 {/if}
 
 <style>
-
+@media (min-width: 768px) {
   .header {
     padding-left: 8.3333%; padding-right: 8.3333%;
   }
   .copy {
     padding-left: 16.6666%; padding-right: 16.6666%;
   }
+}
   :global(.copy ul) {
     margin-bottom: 2rem;
   }
