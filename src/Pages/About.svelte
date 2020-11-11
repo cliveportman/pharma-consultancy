@@ -32,7 +32,9 @@
 
   <h1>About</h1>
 
-  <img src="/img/cambridge.svg" alt="" class="cambridge">
+  <div class="holder">
+    <img src="/img/cambridge.svg" alt="" class="cambridge">
+  </div>
 
   <div class="container">
     <div class="copy" data-aos="fade-up">
@@ -53,6 +55,23 @@
   .cambridge {
     width: 100vw;
     margin-bottom: 4rem;
+  }
+
+  @media (min-width: 1024px) {
+    .holder {
+      text-align: center;
+    }
+    .cambridge {
+      width: 960px;
+      margin: 0 auto 4rem;
+    }
+  }
+
+  @media (min-width: 1367px) {
+    .cambridge {
+      width: 1160px;
+      margin: 0 auto 4rem;
+    }
   }
 
   .copy {

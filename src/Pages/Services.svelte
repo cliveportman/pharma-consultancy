@@ -101,6 +101,7 @@
 
 <style>
   .intro h2 {
+    margin-bottom: 4rem;
     color: #1d1d1d; text-transform: uppercase;
   }
   @media (min-width: 768px) {
@@ -322,7 +323,7 @@
   @media (min-width: 1024px) {
     .services {
       width: 83.3333rem;
-      padding: 30rem 2rem 0;
+      padding: 30rem 2rem 0; margin-bottom: 8rem;
     }
   }
   @media (min-width: 1367px) {

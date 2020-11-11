@@ -6,6 +6,7 @@ query getSitewide {
       navigationLinks {
         title
         uri
+        url
         ...on homepage_homepage_Entry {
           linkTitle
         }
@@ -38,6 +39,7 @@ query getSitewide {
       footerLinks {
         title
         uri
+        url
         ...on homepage_homepage_Entry {
           linkTitle
         }

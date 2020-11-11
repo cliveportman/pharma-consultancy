@@ -27,10 +27,10 @@
     padding: 2rem 2rem 2rem;
   }
   @media (min-width: 1024px) {
-    header { max-width: 1000px; margin: 2rem auto; padding: 0 2rem; }
+    header { max-width: 1000px; margin: 2rem auto 4rem; padding: 0 2rem; }
   }
   @media (min-width: 1366px) {
-    header { max-width: 1200px; margin: 2rem auto; padding: 0 2rem; }
+    header { max-width: 1200px; margin: 2rem auto 4rem; padding: 0 2rem; }
   }
   h1 {
     display: block;

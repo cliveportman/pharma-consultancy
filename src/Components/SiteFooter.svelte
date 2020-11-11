@@ -27,7 +27,7 @@
         <div class="col">
             <nav>  
                 {#each links as link}
-                    <a href="{link.uri}">{link.linkTitle ? link.linkTitle : link.title}</a>
+                    <a href="/{link.uri}">{link.linkTitle ? link.linkTitle : link.title}</a>
                 {/each}
             </nav>
         </div>

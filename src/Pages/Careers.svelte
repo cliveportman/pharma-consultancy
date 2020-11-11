@@ -24,9 +24,12 @@
 
 
 {#if $pageData}
-  <h1>Careers</h1>
 
   <div class="container">
+      
+    <div class="header">
+      <h1 class="show">Careers</h1>
+    </div>
 
     <div class="vacancies">
       <div class="introduction">
@@ -56,9 +59,14 @@
 
 
 @media (min-width: 768px) {
+
+  
+  .header {
+    padding-left: 8.3333%; padding-right: 8.3333%;
+  }
   
 .vacancies {
-  width: 83.3333%; margin: 0 auto 6rem;
+  padding-left: 16.6666%; padding-right: 16.6666%; margin: 0 auto 6rem;
 }
 }
 

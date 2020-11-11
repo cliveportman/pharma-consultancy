@@ -136,7 +136,7 @@
 
   .titles h3 {
     position: absolute; left: 50%; top: 0;
-    font-weight: 500;
+    font-weight: 500; font-weight: 700;
     color: #BD1622;
   }
   .titles p:first-of-type {
@@ -144,7 +144,7 @@
   }
   .titles h3 span {
     display: block;
-    text-transform: uppercase;
+    text-transform: uppercase; font-weight: 700;
   }
   @media (min-width: 768px) {
     .titles h3 {
@@ -156,7 +156,7 @@
   }
 
 .titles p {
-  font-weight: 500;
+  font-weight: 700;
     color: #BD1622;
 }
 </style>
