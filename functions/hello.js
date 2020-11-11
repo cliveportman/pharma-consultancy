@@ -1,5 +1,8 @@
 
-
+const json = [{
+  "title": "My title",
+  "name": "My name"
+}];
 
 const headers = {
   'Access-Control-Allow-Origin': '*',
@@ -12,7 +15,7 @@ exports.handler = function(event, context, callback) {
   callback(null, {
     statusCode: 200,
     headers: headers,
-    body: "Hello, World 1"
+    body: JSON.stringify(json)
   });
 };
 
