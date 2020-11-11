@@ -17,6 +17,7 @@
     "svelte": "^3.0.0"
   },
   "dependencies": {
+    "@sendgrid/mail": "^7.4.0",
     "aos": "^2.3.4",
     "sirv-cli": "^1.0.0",
     "svelte-router-spa": "^5.7.4"
