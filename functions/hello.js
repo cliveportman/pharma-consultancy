@@ -11,6 +11,7 @@ const headers = {
 exports.handler = function(event, context, callback) {
   callback(null, {
     statusCode: 200,
+    headers: headers,
     body: "Hello, World 1"
   });
 };
