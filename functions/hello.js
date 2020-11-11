@@ -12,7 +12,7 @@ exports.handler = function(event, context, callback) {
   callback(null, {
     statusCode: 200,
     headers,
-    body: "Hello, World"
+    body: "Hello, World 1"
   });
 };
 
