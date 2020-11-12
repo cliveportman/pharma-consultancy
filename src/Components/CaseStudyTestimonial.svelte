@@ -2,14 +2,14 @@
   export let caseStudy
 </script>
 
+{#if caseStudy.quote}
 <div>
   <img src="/img/icons/quotes.svg" alt="" class="icon">
 </div>
 
-{#if caseStudy.quote}
 <h4>Testimonial</h4>
 <div class="testimonial">
-  <div class="arrow">{caseStudy.arrowText}</div>
+  <div class="arrow">{caseStudy.arrowText.replace(/\n/g, "<br />")}</div>
   <blockquote>
     <p><span>“</span> {caseStudy.quote} <span>”</span></p>
   </blockquote>
@@ -24,24 +24,24 @@
 
 @media (min-width: 768px) {
 .testimonial {
-  margin: 0 -13%;
+  margin: 0 -5%;
   display: flex; justify-content: space-between; align-self: flex-start;
 }
   .arrow {
     position: relative;
-    display: block; height: 10rem; width: 35%;
+    display: block; height: 8rem; width: 35%;
     padding: 1rem  1rem 5rem;
     background: #E74A1E;
     color: white; font-size: 1.6rem;
   }
   .arrow:after {
-    position: absolute; right: -3rem; top: 0;
+    position: absolute; right: -2rem; top: 0;
     content: "";
     display: block; width: 0; height: 0; 
-    border-top: 50px solid transparent;
-    border-bottom: 50px solid transparent;
+    border-top: 40px solid transparent;
+    border-bottom: 40px solid transparent;
   
-    border-left: 30px solid #E74A1E;
+    border-left: 20px solid #E74A1E;
   }
   blockquote {
     width: 55%;
@@ -58,7 +58,7 @@
   @media (min-width: 768px) {
   blockquote {
     
-    margin-left: 6rem;
+    margin-left: 4rem;
     padding: 0 0 2rem 0;
   }
   }
