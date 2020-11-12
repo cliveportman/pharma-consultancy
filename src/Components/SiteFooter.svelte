@@ -22,7 +22,7 @@
             <p>{@html address.replace(/\n/g, "<br />")}</p>
         </div>
         <div class="col">
-            <a href="/contact" class="maplink"><img src="/img/icons/map-red.svg" alt="">Map - find us</a>
+            <a href="/contact#googlemap" class="maplink"><img src="/img/icons/map-red.svg" alt="">Map - find us</a>
         </div>
         <div class="col">
             <nav>  

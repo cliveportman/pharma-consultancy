@@ -65,7 +65,6 @@ query getServices {
           }
           arrowText
           quote
-          source
         }
         
       }

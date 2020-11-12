@@ -30,8 +30,21 @@
   $: console.log(message)
 
   
-
-
+  import { mapStyles } from '../Components/map-styles';
+	let container;
+	let map;
+	let zoom = 8;
+    let center = {lat: -34.397, lng: 150.644};
+    
+    import { onMount } from 'svelte';
+    
+	onMount(async () => {
+		map = new google.maps.Map(container, {
+            zoom,
+			center,
+			styles: mapStyles // optional
+		});
+	});
 
   // let options = {
   //   method: "POST",
@@ -80,6 +93,12 @@
         {@html $sitewideData.entry.successMessage}
       </div>
     {/if}
+
+  </div>
+
+  <div class="container" id="googlemap">
+
+    <div class="map" bind:this={container}></div>
 
   </div>
 
@@ -165,5 +184,15 @@ button {
 
 .container {
 
+}
+
+.map {
+  height: 30rem;
+}
+@media (min-width: 768px) {
+  .map {
+    margin: 0 8.3333% 4rem;
+  height: 30rem;
+}
 }
   </style>
