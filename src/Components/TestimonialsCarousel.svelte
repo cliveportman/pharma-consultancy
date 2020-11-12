@@ -45,7 +45,7 @@
     h2 {
       position: relative;
       display: block; height: 6.2rem;
-      padding: 1.2rem 2rem 0;
+      padding: 1.2rem 2rem 0; margin-bottom: 0;
       color: white; font-size: 1.6rem; line-height: 5rem; text-transform: uppercase;
       background: #BD1622;
     }

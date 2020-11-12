@@ -28,7 +28,7 @@
   <div class="container">
       
     <div class="header">
-      <h1 class="show">Careers</h1>
+      <h1>Careers</h1>
     </div>
 
     <div class="vacancies">

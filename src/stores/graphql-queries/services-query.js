@@ -50,9 +50,6 @@ query getServices {
             ... on solutionDetails_block_BlockType {
               heading
               copy
-              bullets {
-                item
-              }
             }
           }
           outcomeDetails {

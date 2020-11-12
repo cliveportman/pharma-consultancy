@@ -55,7 +55,7 @@
     
   <div class="container">
     <div class="intro">
-      <h2>Evidence & Access<br> Integrated</h2>
+      <h2>Evidence & Access<br> - Integrated</h2>
       {@html $pageData.entry.paragraph2}
       {@html $pageData.entry.paragraph1}
     </div>
@@ -102,7 +102,7 @@
 <style>
   .intro h2 {
     margin-bottom: 4rem;
-    color: #1d1d1d; text-transform: uppercase;
+    text-transform: uppercase;
   }
   @media (min-width: 768px) {
     .intro h2 br {

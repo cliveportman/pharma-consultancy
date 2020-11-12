@@ -22,10 +22,10 @@
             <p>{@html address.replace(/\n/g, "<br />")}</p>
         </div>
         <div class="col">
-            <a href="/contact#googlemap" class="maplink"><img src="/img/icons/map-red.svg" alt="">Map - find us</a>
         </div>
         <div class="col">
-            <nav>  
+            <nav>
+              <a href="/contact#googlemap" class="">Find us</a>
                 {#each links as link}
                     <a href="/{link.uri}">{link.linkTitle ? link.linkTitle : link.title}</a>
                 {/each}

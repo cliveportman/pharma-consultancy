@@ -74,7 +74,7 @@
   }
   @media (min-width: 1024px) {
     .introduction {
-      padding-left: 8.3333%; padding-right: 50%;
+      padding-left: 0; padding-right: 50%;
     }
   }
 
@@ -99,7 +99,8 @@
   }
 
   h2 {
-    color: #1d1d1d; text-transform: uppercase;
+    margin-bottom: 8rem;
+    text-transform: uppercase;
   }
 
   header {

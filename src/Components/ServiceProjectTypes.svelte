@@ -6,11 +6,11 @@
 
 
 
-<div class="project-types container">
-  <h3 data-aos="fade-left">Project types:</h3>
+<div class="project-types container"  data-aos="fade-up">
+  <h3>Project types:</h3>
   <ul>
     {#each service.projectTypes as bullet, index}
-      <li data-aos="fade-left" data-aos-delay="{(index +1) * 150}"><span class="border"><span class="triangle"></span><span class="text">{bullet.item}</span></span></li>
+      <li><span class="border"><span class="triangle"></span><span class="text">{bullet.item}</span></span></li>
     {/each}
   </ul>
 </div>
