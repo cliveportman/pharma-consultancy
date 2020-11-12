@@ -20,14 +20,19 @@
    })
   .catch(console.error);
 
+  
+  let width
+  let height
+  let videoUrl
+  let videoElement
+  let speed = 2
+  let paused = true
+
   onMount(() => {
     AOS.init();
   });
 
 
-  let width
-  let height
-  let videoUrl
   $: getVideoUrl(width, height);
   function getVideoUrl(width, height) {
     if (width > height) {
@@ -37,12 +42,13 @@
     }
   }
 
+  $: if (videoElement) setTimeout(() => { videoElement.play() }, 1)
+
 </script>
 <svelte:window bind:innerWidth="{width}" bind:innerHeight="{height}"/>
 
 
 {#if $pageData}
-  
   <section class="splash">
     <h1>
       <div>      
@@ -50,7 +56,7 @@
           <span class="line2" data-aos="fade-left" data-aos-delay="1800">Integrated</span>
       </div>
     </h1>
-    <video autoplay src="{videoUrl}">
+    <video src="{videoUrl}" bind:playbackRate="{speed}" bind:paused="{paused}" bind:this={videoElement} allow="autoplay" muted>
       <track kind="captions">
     </video>
   </section>
@@ -86,7 +92,7 @@
   }
   @media (min-width: 1024px) {
     .splash {
-      height: 80vh;
+      height: 70vh;
     }
   }
 
