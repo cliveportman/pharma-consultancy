@@ -71,6 +71,11 @@
         padding: 2rem 15rem 3.2rem;
     }
     }
+    @media (min-width: 1024px) {
+    .slide-content {
+        padding: 2rem 10rem 3.2rem;
+    }
+    }
         p {
             margin-bottom: 2rem;
             color: #BD1622;
@@ -84,6 +89,7 @@
       position: relative;
       display: block; width: 4rem; height: 4rem;
       border-top: 1px solid white; border-left: 1px solid white;
+      border-color: #1d1d1d;
       text-indent: -9999px;
     }
     .control.prev {
@@ -93,6 +99,11 @@
     .control.next {
       right: 1.6rem;
       transform: rotate(135deg);
+    }
+    @media (min-width: 768px) {
+      .control {
+        
+      }
     }
 :global(div.slides > div) {
   
