@@ -157,13 +157,13 @@
     }
       .services-paragraph1 {
         width: calc(28rem - 8.3333%);
-        position: absolute; right: calc(8.3333%); top: 6rem;
+        position: absolute; right: calc(8.3333%); top: 9rem;
       }
       .services-paragraph2 {
-        width: 17rem;
+        width: 24rem;
         position: absolute;
-        left: calc(16.6666%);
-        top: 23rem;
+        left: 6rem;
+        top: 25rem;
       }
 
     :global(.service-toggle) {
@@ -219,12 +219,12 @@
   }
     .services-paragraph1 {
       width: calc(38rem - 8.3333%);
-      right: calc(8.3333%); top: 6rem;
+      right: calc(8.3333%); top: 10rem;
     }
     .services-paragraph2 {
       width: 22rem;
       left: calc(16.6666%);
-      top: 26rem;
+      top: 26.5rem;
     }
 
   :global(.service-toggle) {
@@ -268,12 +268,12 @@
   }
     .services-paragraph1 {
       width: calc(46rem - 8.3333%);
-      right: calc(8.3333%); top: 8rem;
+      right: calc(8.3333%); top: 12rem;
     }
     .services-paragraph2 {
-      width: 22rem;
-      left: calc(16.6666%);
-      top: 28rem;
+      width: calc(38rem - 8.3333%);
+      left: 205px;
+      top: 31.5rem; text-align: left;
     }
 
   :global(.service-toggle) {

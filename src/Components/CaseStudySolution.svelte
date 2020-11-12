@@ -2,11 +2,11 @@
   export let caseStudy
 </script>
 
+{#if caseStudy.solutionDetails}
 <div>
   <img src="/img/icons/stats.svg" alt="" class="icon">
 </div>
 
-{#if caseStudy.solutionDetails}
 <div class="blue">
   <h4>Solution</h4>
   {#each caseStudy.solutionDetails as block}
