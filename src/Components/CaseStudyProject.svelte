@@ -14,11 +14,7 @@
   <h4>Project</h4>
   {#each caseStudy.projectDetails as block}
     <h5>{block.heading}</h5>
-    <ul>
-      {#each block.bullets as bullet}
-        <li class="clearfix"><span class="triangle"></span><span class="text">{bullet.item}</span></li>
-      {/each}
-    </ul>
+    {@html block.copy}
   {/each}
 </div>
 {/if}

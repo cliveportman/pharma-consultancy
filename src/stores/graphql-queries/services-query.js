@@ -27,9 +27,7 @@ query getServices {
           challengeDetails {
             ... on challengeDetails_block_BlockType {
               heading
-              bullets {
-                item
-              }
+              copy
             }
           }
           projectDetailsFlags {
@@ -41,9 +39,7 @@ query getServices {
           projectDetails {
             ... on projectDetails_block_BlockType {
               heading
-              bullets {
-                item
-              }
+              copy
             }
           }
           solutionDetails {
@@ -55,9 +51,7 @@ query getServices {
           outcomeDetails {
             ... on outcomeDetails_block_BlockType {
               heading
-              bullets {
-                item
-              }
+              copy
             }
           }
           arrowText
