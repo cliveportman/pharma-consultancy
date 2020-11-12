@@ -43,7 +43,17 @@
             zoom,
 			center,
 			styles: mapStyles // optional
-		});
+    });
+
+    const hash = window.location.hash.substr(1)
+    if (hash.length) {
+      const element = document.getElementById(hash);
+      element.scrollIntoView()
+    }
+    console.log(hash)
+
+
+
 	});
 
   // let options = {
