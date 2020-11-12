@@ -3,12 +3,12 @@
     import Carousel from '@beyonk/svelte-carousel'
 </script>
 
+<div class="holder">
 <h2>What our clients say <img src="/img/cogentia-logo-white.svg" alt="Cogentia"></h2>
 
 <section>
 <Carousel
     perPage="1"
-    autoplay="5000"
 >
     <span class="control prev" slot="left-control">Prev</span>
 
@@ -25,13 +25,20 @@
 
 </Carousel>
 </section>
+</div>
+
 <style>
+  .holder {
+    margin-bottom: 4rem;;
+  }
   section {
     width: 100%; overflow: hidden;
-    margin-bottom: 2rem;
+        background: #E0EAED;
+        border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;
   }
   @media (min-width: 1024px) {
-    section {
+    .holder {
+      padding: 0 8.3333%;
       margin-bottom: 6rem;
     }
   }
@@ -55,8 +62,9 @@
 
     .slide-content {
         padding: 2rem 6rem 3.2rem;
-        background: #E0EAED;
-        border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
     }
     @media (min-width: 768px) {
     .slide-content {
@@ -86,6 +94,11 @@
       right: 1.6rem;
       transform: rotate(135deg);
     }
-
+:global(div.slides > div) {
+  
+  display: flex;
+    justify-content: center;
+    align-items: center;
+}
 </style>
 

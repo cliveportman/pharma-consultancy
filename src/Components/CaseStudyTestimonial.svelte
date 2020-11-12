@@ -12,7 +12,6 @@
   <div class="arrow">{caseStudy.arrowText}</div>
   <blockquote>
     <p><span>“</span> {caseStudy.quote} <span>”</span></p>
-    {#if caseStudy.source}<cite>{caseStudy.source}</cite>{/if}
   </blockquote>
 </div>
 {/if}
