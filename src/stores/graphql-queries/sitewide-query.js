@@ -75,11 +75,5 @@ query getSitewide {
       ogImage
   	} 
   }
-  entries(section:"testimonials") {
-    ...on testimonials_testimonials_Entry {
-      source
-      quote
-    }
-  }
 }
 `

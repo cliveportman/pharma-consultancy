@@ -12,7 +12,7 @@
 >
     <span class="control prev" slot="left-control">Prev</span>
 
-    {#each $sitewideData.entries as testimonial}
+    {#each $sitewideData.globalSet.testimonials as testimonial}
     <div class="slide-content">
         <blockquote>
             <p>"{testimonial.quote}"</p>
