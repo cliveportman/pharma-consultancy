@@ -159,6 +159,7 @@
         grid-template-columns: repeat(3, 1fr);
         column-gap: 2rem;
         margin: 6rem 0;
+      padding: 0 8.3333%
       }
       .textblock {
         margin-bottom: 0;
