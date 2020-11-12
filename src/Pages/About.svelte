@@ -22,9 +22,9 @@
    })
   .catch(console.error);
 
-  // onMount(() => {
-  //   AOS.init();
-  // });
+  onMount(() => {
+    AOS.init();
+  });
 
 </script>
 

@@ -75,4 +75,7 @@
     display: block;
     font-size: 1.6rem; color: #595958; font-style: normal;
   }
+
+
+  
 </style>

@@ -20,9 +20,9 @@
    })
   .catch(console.error);
 
-  // onMount(() => {
-  //   AOS.init();
-  // });
+  onMount(() => {
+    AOS.init();
+  });
 
 
   let width
@@ -58,7 +58,7 @@
   <div class="container">
     <section class="textblocks">
       {#each $pageData.entry.threeTextBlocks as block, index}
-        <div class="textblock" data-aos="fade-up" data-aos-delay="{index * 150}" data-aos-offset="0">
+        <div class="textblock" data-aos="fade-up" data-aos-delay="{index * 150}">
           <h2>{block.heading}</h2>
           {@html block.text}
         </div>
@@ -138,10 +138,6 @@
   }
 }
 
-.slide-in-right {
-	-webkit-animation: slide-in-right 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) 2000ms both;
-	        animation: slide-in-right 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) 2000ms both;
-}
 
 
 

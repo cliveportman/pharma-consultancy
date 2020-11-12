@@ -3,7 +3,6 @@
   import LoadingIcon from '../Components/LoadingIcon.svelte';
   import {slide} from 'svelte/transition'
   import TestimonialsCarousel from '../Components/TestimonialsCarousel.svelte'
-  console.log($sitewideData)
 
   let firstName
   let lastName
@@ -22,12 +21,6 @@
     formSubmitted = true
 
   }
-
-  $: console.log(firstName)
-  $: console.log(lastName)
-  $: console.log(email)
-  $: console.log(tel)
-  $: console.log(message)
 
   
   import { mapStyles } from '../Components/map-styles';

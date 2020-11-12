@@ -29,9 +29,9 @@
    })
   .catch(console.error);
 
-  // onMount(() => {
-  //   AOS.init();
-  // });
+  onMount(() => {
+    AOS.init();
+  });
 
   AOS.refresh();
 
@@ -61,8 +61,8 @@
     </div>
   
     <div class="services-paragraphs">
-      <div class="services-paragraph1">{@html $pageData.entry.paragraph1}</div>
-      <div class="services-paragraph2">{@html $pageData.entry.paragraph2}</div>
+      <div class="services-paragraph1" data-aos="fade-in" data-aos-delay="1050">{@html $pageData.entry.paragraph1}</div>
+      <div class="services-paragraph2" data-aos="fade-in" data-aos-delay="1200">{@html $pageData.entry.paragraph2}</div>
     </div>
 
   </div>
@@ -70,11 +70,11 @@
     <div class="services">
       {#each $pageData.entries as service, index}
 
-        <div class="service" style="--colour1: {service.colour1}; --colour2: {service.colour2};">
+        <div class="service" style="--colour1: {service.colour1}; --colour2: {service.colour2};" >
           
           <Navigate to="{currentRoute.path == '/' + service.uri ? '/services' : '/' + service.uri}" styles="service-toggle {currentRoute.path != '/services' && currentRoute.path != '/' + service.uri ? 'outline' : ''}">
-            <button>{currentRoute.path == '/' + service.uri ? '−' : '+'}</button>
-            <h2>{splitTitle(service.title)[0].toUpperCase()} {splitTitle(service.title)[1]}</h2>          
+            <button data-aos="fade-left" data-aos-delay="{index * 150}">{currentRoute.path == '/' + service.uri ? '−' : '+'}</button>
+            <h2 data-aos="fade-left" data-aos-delay="{index * 150}">{splitTitle(service.title)[0].toUpperCase()} {splitTitle(service.title)[1]}</h2>          
           </Navigate>
 
           {#if currentRoute.path == '/' + service.uri}
