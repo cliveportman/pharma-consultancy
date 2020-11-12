@@ -23,7 +23,7 @@ query getServices {
       detailedCaseStudy {
         ... on caseStudies_long_Entry {
           title
-          summary
+          caseStudySummary
           challengeDetails {
             ... on challengeDetails_block_BlockType {
               heading

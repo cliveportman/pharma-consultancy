@@ -22,6 +22,9 @@
 
   }
 
+import { onMount } from 'svelte'
+import AOS from 'aos'
+
   
   import { mapStyles } from '../Components/map-styles';
 	let container;
@@ -29,7 +32,6 @@
 	let zoom = 8;
     let center = {lat: -34.397, lng: 150.644};
     
-    import { onMount } from 'svelte';
     
 	onMount(async () => {
 		map = new google.maps.Map(container, {
@@ -44,6 +46,9 @@
       element.scrollIntoView()
     }
     console.log(hash)
+
+    
+  AOS.init();
 
 
 
@@ -75,11 +80,11 @@
   <div class="container ">
 
     <div class="contacts">
-      <p>{@html $sitewideData.entry.address.replace(/\n/g, "<br />")}</p>
-      <p>{$sitewideData.entry.tel}<br><a href="mailto:">{$sitewideData.entry.email}</a></p>
+      <p data-aos="fade-up">{@html $sitewideData.entry.address.replace(/\n/g, "<br />")}</p>
+      <p data-aos="fade-up">{$sitewideData.entry.tel}<br><a href="mailto:">{$sitewideData.entry.email}</a></p>
     </div>
 
-    <div class="sendmessage {formSubmitted ? 'sent' : ''}" out:slide="{{ duration: 300 }}">
+    <div class="sendmessage {formSubmitted ? 'sent' : ''}" out:slide="{{ duration: 300 }}" data-aos="fade-up">
       <h2>Send a message</h2>
       <form>
         <input type="text" placeholder="FIRST NAME*" bind:value={firstName}>
@@ -99,7 +104,7 @@
 
   </div>
 
-  <div class="container" id="googlemap">
+  <div class="container" id="googlemap" data-aos="fade-up">
 
     <div class="map" bind:this={container}></div>
 
@@ -174,6 +179,7 @@ button {
   padding: 0 2rem 2rem;
 }
 :global(.successmessage p) {
+  
   font-size: 1.6rem; margin: 0; padding-bottom: 2rem;
   color: #BD1622;
 }

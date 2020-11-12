@@ -3,7 +3,6 @@
   import { url, options, aboutData as pageData } from '../stores/global-store'
   import {query } from '../stores/graphql-queries/about-query'
   import LoadingIcon from '../Components/LoadingIcon.svelte';
-  import AOS from 'aos'
   import TestimonialsCarousel from '../Components/TestimonialsCarousel.svelte'
 
   export let currentRoute  
@@ -22,6 +21,7 @@
    })
   .catch(console.error);
 
+  import AOS from 'aos'
   onMount(() => {
     AOS.init();
   });

@@ -20,6 +20,12 @@
    })
   .catch(console.error);
 
+import { onMount } from 'svelte'
+import AOS from 'aos'
+onMount(() => {
+  AOS.init();
+});
+
 </script>
 
 
@@ -32,11 +38,11 @@
     </div>
 
     <div class="vacancies">
-      <div class="introduction">
+      <div class="introduction" data-aos="fade-up">
         {@html $pageData.entry.introduction}
       </div>
       {#each $pageData.entry.vacancies as vacancy}
-        <div class="vacancy">
+        <div class="vacancy" data-aos="fade-up">
           <h2>{vacancy.jobTitle}</h2>
           <div class="copy">
             <div class="summary">
@@ -47,7 +53,9 @@
           </div>
         </div>
       {/each}
+      <div  data-aos="fade-up">
       {@html $pageData.entry.additionalCopy}
+    </div>
     </div>
     <TestimonialsCarousel/>
   </div>
@@ -60,13 +68,20 @@
 
 @media (min-width: 768px) {
 
-  
-  .header {
-    padding-left: 8.3333%; padding-right: 8.3333%;
-  }
-  
+
+.vacancies {
+  margin: 0 auto 6rem;
+}
+
+}
+@media (min-width: 1024px) {
+
+
 .vacancies {
   padding-left: 16.6666%; padding-right: 16.6666%; margin: 0 auto 6rem;
+}
+
+.copy {
 }
 }
 
@@ -81,10 +96,6 @@
     }
     :global(.vacancy p) {   
       margin-bottom: 1rem;
-    }
-
-    .copy {
-      display: flex; justify-content: space-between;
     }
 
     .download {

@@ -19,17 +19,26 @@
    })
   .catch(console.error);
 
+import { onMount } from 'svelte'
+import AOS from 'aos'
+onMount(() => {
+  AOS.init();
+});
+
 </script>
 
 
 {#if $pageData}
-  <h1>Publications</h1>
 
   <div class="container">
 
+    <div class="header">
+      <h1 class="show">Publications</h1>
+    </div>
+
     <div class="publications">
       {#each $pageData.entries as publication}
-        <div class="publication">
+        <div class="publication" data-aos="fade-up">
           <header>
             <h6>Publication</h6>
             <h3>{publication.title}</h3>
@@ -52,11 +61,17 @@
 
 @media (min-width: 768px) {
   
+  .publications {
+    margin: 0 auto 6rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 2rem;
+  }
+  }
+@media (min-width: 1024px) {
+  
 .publications {
-  width: 83.3333%; margin: 0 auto 6rem;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  column-gap: 2rem;
+  width: 83.3333%;
 }
 }
   .publication{

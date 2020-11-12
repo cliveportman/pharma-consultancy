@@ -20,6 +20,12 @@
    })
   .catch(console.error);
 
+  import { onMount } from 'svelte'
+  import AOS from 'aos'
+  onMount(() => {
+    AOS.init();
+  });
+
 </script>
 
 
@@ -30,7 +36,7 @@
 
     <div class="casestudies">
       {#each $pageData.entries as caseStudy}
-        <div class="casestudy">
+        <div class="casestudy" data-aos="fade-up">
           <header>
             <h6>Case study</h6>
             <h3>{caseStudy.title}</h3>
