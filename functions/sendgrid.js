@@ -32,22 +32,14 @@ exports.handler = function(event, context, callback) {
 
   console.log(event)
   console.log(event.body)
-  console.log(event.body.message)
-  
-  let body = {}
-  try {
-    body = JSON.parse(event.body)
-    console.log(body)
-  } catch (e) {
-    body = parse(event.body)
-    console.log(body)
-  }
 
   const {
     SENDGRID_API_KEY,
     SENDGRID_SENDER_EMAIL,
     SENDGRID_SENDER_NAME
   } = process.env
+
+  const message = "Hello"
 
   const returnData = {
     "message": "Hi!"
@@ -59,18 +51,14 @@ exports.handler = function(event, context, callback) {
     body: JSON.stringify(returnData)
   });
 
-  // console.log(event)
-  // const body = JSON.parse(event.body)
-  // const message = body.message
+  client.setApiKey(SENDGRID_API_KEY)
 
-  // client.setApiKey(SENDGRID_API_KEY)
-
-  // sendEmail(
-  //   client,
-  //   message,
-  //   SENDGRID_SENDER_EMAIL,
-  //   SENDGRID_SENDER_NAME
-  // )
-  // .then(response => callback(null, { statusCode: response.statusCode }))
-  // .catch(err => callback(err, null))
+  sendEmail(
+    client,
+    message,
+    SENDGRID_SENDER_EMAIL,
+    SENDGRID_SENDER_NAME
+  )
+  .then(response => callback(null, { statusCode: response.statusCode }))
+  .catch(err => callback(err, null))
 }
