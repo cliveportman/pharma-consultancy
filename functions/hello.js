@@ -46,7 +46,7 @@ const headers = {
 
 //import querystring from "querystring";
 
-exports.handler = function(event, context, callback) => {
+exports.handler = function(event, context, callback)  {
   // Only allow POST
   if (event.httpMethod !== "POST") {
     return { statusCode: 405, body: "Method Not Allowed" };
