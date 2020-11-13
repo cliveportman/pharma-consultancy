@@ -27,7 +27,7 @@ exports.handler = function(event, context, callback) {
     SENDGRID_SENDER_EMAIL,
     SENDGRID_SENDER_NAME
   } = process.env
-  console.log(event.body)
+  console.log(event)
   const body = JSON.parse(event.body)
   const message = body.message
 
