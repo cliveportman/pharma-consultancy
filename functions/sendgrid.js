@@ -45,11 +45,11 @@ exports.handler = function(event, context, callback) {
     "message": "Hi!"
   };
 
-  callback(null, {
-    statusCode: 200,
-    headers: headers,
-    body: JSON.stringify(returnData)
-  });
+  // callback(null, {
+  //   statusCode: 200,
+  //   headers: headers,
+  //   body: JSON.stringify(returnData)
+  // });
 
   client.setApiKey(SENDGRID_API_KEY)
 
