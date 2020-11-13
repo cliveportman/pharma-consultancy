@@ -22,23 +22,44 @@ function sendEmail(client, message, senderEmail, senderName) {
 }
 
 exports.handler = function(event, context, callback) {
+
+  
+  const headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
+  };
+
+  
+
   const {
     SENDGRID_API_KEY,
     SENDGRID_SENDER_EMAIL,
     SENDGRID_SENDER_NAME
   } = process.env
-  console.log(event)
-  const body = JSON.parse(event.body)
-  const message = body.message
 
-  client.setApiKey(SENDGRID_API_KEY)
+  const returnData = {
+    "message": "Hi!"
+  };
 
-  sendEmail(
-    client,
-    message,
-    SENDGRID_SENDER_EMAIL,
-    SENDGRID_SENDER_NAME
-  )
-  .then(response => callback(null, { statusCode: response.statusCode }))
-  .catch(err => callback(err, null))
+  callback(null, {
+    statusCode: 200,
+    headers: headers,
+    body: JSON.stringify(returnData)
+  });
+
+  // console.log(event)
+  // const body = JSON.parse(event.body)
+  // const message = body.message
+
+  // client.setApiKey(SENDGRID_API_KEY)
+
+  // sendEmail(
+  //   client,
+  //   message,
+  //   SENDGRID_SENDER_EMAIL,
+  //   SENDGRID_SENDER_NAME
+  // )
+  // .then(response => callback(null, { statusCode: response.statusCode }))
+  // .catch(err => callback(err, null))
 }
