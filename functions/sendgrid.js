@@ -1,64 +1,35 @@
-const client = require("@sendgrid/mail")
+const sgMail = require('@sendgrid/mail')
+const { SENDGRID_API_KEY, SENDGRID_SENDER_EMAIL } = process.env
 
-function sendEmail(client, message, senderEmail, senderName) {
-  return new Promise((fulfill, reject) => {
-    const data = {
-      from: {
-        email: senderEmail,
-        name: senderName
-      },
-      subject: 'Netlify Function - Sendgrid Email',
-      to: 'your.email@here.com',
-      html: `Hey, you\'ve sent an email from Netlify Functions<br/>Message: ${message}`
+exports.handler =  async (event, context, callback) => {
+
+    //const payload = JSON.parse(event.body)
+    //const { email, subject } = payload
+
+    sgMail.setApiKey(SENDGRID_API_KEY)
+
+    // const body = Object.keys(payload).map((k) => {
+    //     return `${k}: ${payload[k]}`
+    // }).join("<br><br>");
+
+    const msg = {
+        to: SENDGRID_TO_EMAIL,
+        from: 'clive@theportman.co',
+        subject: 'Contact Form Submission',
+        html: 'Hello',
+    };
+
+    try{
+        await sgMail.send(msg)
+        
+        return {
+            statusCode: 200,
+            body: "Message sent"
+        }
+    } catch(e){
+        return {
+            statusCode: e.code,
+            body: e.message
+        }
     }
-
-    client
-      .send(data)
-      .then(([response, body]) => {
-        fulfill(response)
-      })
-      .catch(error => reject(error))
-  })
-}
-
-exports.handler = function(event, context, callback) {
-
-  
-  const headers = {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Headers': 'Content-Type',
-    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
-  };
-
-  console.log(event)
-  console.log(event.body)
-
-  const {
-    SENDGRID_API_KEY,
-    SENDGRID_SENDER_EMAIL,
-    SENDGRID_SENDER_NAME
-  } = process.env
-
-  const message = "Hello"
-
-  const returnData = {
-    "message": "Hi!"
-  };
-
-  // callback(null, {
-  //   statusCode: 200,
-  //   headers: headers,
-  //   body: JSON.stringify(returnData)
-  // });
-
-  client.setApiKey(SENDGRID_API_KEY)
-
-  sendEmail(
-    client,
-    message,
-    SENDGRID_SENDER_EMAIL,
-    SENDGRID_SENDER_NAME
-  )
-  .then(response => callback(null, { statusCode: response.statusCode }))
-  .catch(err => callback(err, null))
-}
+};
