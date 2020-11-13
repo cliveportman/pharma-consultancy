@@ -17,7 +17,8 @@ exports.handler = function(event, context, callback) {
     SENDGRID_SENDER_NAME
   } = process.env
 
-  const message = event.queryStringParameters.message;
+  const data = event.queryStringParameters.data;
+  const jsonData = JSON.parse(data)
 
 
   
@@ -25,7 +26,7 @@ exports.handler = function(event, context, callback) {
     "key": SENDGRID_API_KEY,
     "email": SENDGRID_SENDER_EMAIL,
     "name": SENDGRID_SENDER_NAME,
-    "message": message
+    "firstname": jsonData.firstName
   }];
 
 
