@@ -31,6 +31,7 @@ exports.handler = function(event, context, callback) {
   };
 
   console.log(event)
+  console.log(event.body)
 
   const {
     SENDGRID_API_KEY,
