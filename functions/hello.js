@@ -60,6 +60,7 @@ exports.handler = async (event, context) => {
     };
   return {
     statusCode: 200,
+    headers: headers,
     body: JSON.stringify(returnData)
   };
 };
