@@ -33,6 +33,15 @@ exports.handler = function(event, context, callback) {
   console.log(event)
   console.log(event.body)
   console.log(event.body.message)
+  
+  let body = {}
+  try {
+    body = JSON.parse(event.body)
+    console.log(body)
+  } catch (e) {
+    body = parse(event.body)
+    console.log(body)
+  }
 
   const {
     SENDGRID_API_KEY,
