@@ -23,8 +23,7 @@ exports.handler = function(event, context, callback) {
   const json = [{
     "key": SENDGRID_API_KEY,
     "email": SENDGRID_SENDER_EMAIL,
-    "name": SENDGRID_SENDER_NAME,
-    "message": message
+    "name": SENDGRID_SENDER_NAME
   }];
 
 
