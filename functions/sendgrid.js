@@ -30,7 +30,7 @@ exports.handler = function(event, context, callback) {
     'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
   };
 
-  
+  console.log(event)
 
   const {
     SENDGRID_API_KEY,
