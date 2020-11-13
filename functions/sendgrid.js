@@ -1,5 +1,3 @@
-import { parse } from 'querystring'
-
 const client = require("@sendgrid/mail")
 
 function sendEmail(client, message, senderEmail, senderName) {
