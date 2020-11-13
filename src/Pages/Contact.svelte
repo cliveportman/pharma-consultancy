@@ -20,6 +20,46 @@
     console.log(message)
     formSubmitted = true
 
+    
+
+    const formData = {
+    "name": "Ginger",
+  }
+  let options = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: formData
+  }
+  // const string = JSON.stringify(formData)
+  // const json = JSON.parse(string)
+  // console.log(json.email)
+  // console.log("https://silly-leavitt-9429a2.netlify.app/.netlify/functions/hello?data=" + string)
+
+
+  // fetch("https://silly-leavitt-9429a2.netlify.app/.netlify/functions/hello", options)
+  // .then( (resp) => resp.json() )
+  // .then(function(json) {
+
+  //   console.log(json)
+
+  //  })
+  // .catch(console.error);
+
+  
+  // const rawResponse = fetch('https://httpbin.org/post', {
+  //   method: 'POST',
+  //   headers: {
+  //     'Accept': 'application/json',
+  //     'Content-Type': 'application/json'
+  //   },
+  //   body: JSON.stringify({a: 1, b: 'Textual content'})
+  // });
+  // const content = rawResponse.json();
+
+  // console.log(content);
+
+
+
   }
 
 import { onMount } from 'svelte'
@@ -59,21 +99,6 @@ import AOS from 'aos'
 
 
 	});
-
-  // let options = {
-  //   method: "POST",
-  //   headers: { "Content-Type": "application/json" }
-  // }
-
-
-  // fetch("https://silly-leavitt-9429a2.netlify.app/.netlify/functions/hello", options)
-  // .then( (resp) => resp.json() )
-  // .then(function(json) {
-
-  //   console.log(json)
-
-  //  })
-  // .catch(console.error);
 
   export let currentRoute
   gtag('config', 'UA-26565851-1', {
