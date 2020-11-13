@@ -12,67 +12,55 @@
 
   let formSubmitted = false
 
-  function submitForm() {
-
-    console.log(firstName)
-    console.log(lastName)
-    console.log(email)
-    console.log(tel)
-    console.log(message)
-
-
-    formSubmitted = true    
-
-    const formData = {
-      "message": "Ginger",
-    }
-    const jsonString = JSON.stringify(formData)
-    //const jsonParsed = JSON.parse(formData)
-    const jsonParsed = JSON.parse(jsonString)
-    console.log(jsonParsed)
-
-    let options = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: jsonString
-    }
-    fetch("https://silly-leavitt-9429a2.netlify.app/.netlify/functions/sendgrid", options)
-    .then( (resp) => resp.json() )
-    .then(function(json) {
-
-      console.log(json)
-
-    })
-    .catch(console.error);
-
-
-
+  // function submitForm() {
+  //   console.log(firstName)
+  //   console.log(lastName)
+  //   console.log(email)
+  //   console.log(tel)
+  //   console.log(message)
+  //   formSubmitted = true
 
     
-  // const string = JSON.stringify(formData)
-  // const json = JSON.parse(string)
-  // console.log(json.email)
-  // console.log("https://silly-leavitt-9429a2.netlify.app/.netlify/functions/hello?data=" + string)
+
+  //   const formData = {
+  //   "name": "Ginger",
+  // }
+  // let options = {
+  //   method: "POST",
+  //   headers: { "Content-Type": "application/json" },
+  //   body: formData
+  // }
+  // // const string = JSON.stringify(formData)
+  // // const json = JSON.parse(string)
+  // // console.log(json.email)
+  // // console.log("https://silly-leavitt-9429a2.netlify.app/.netlify/functions/hello?data=" + string)
 
 
+  // // fetch("https://silly-leavitt-9429a2.netlify.app/.netlify/functions/hello", options)
+  // // .then( (resp) => resp.json() )
+  // // .then(function(json) {
 
+  // //   console.log(json)
+
+  // //  })
+  // // .catch(console.error);
 
   
-  // const rawResponse = fetch('https://httpbin.org/post', {
-  //   method: 'POST',
-  //   headers: {
-  //     'Accept': 'application/json',
-  //     'Content-Type': 'application/json'
-  //   },
-  //   body: JSON.stringify({a: 1, b: 'Textual content'})
-  // });
-  // const content = rawResponse.json();
+  // // const rawResponse = fetch('https://httpbin.org/post', {
+  // //   method: 'POST',
+  // //   headers: {
+  // //     'Accept': 'application/json',
+  // //     'Content-Type': 'application/json'
+  // //   },
+  // //   body: JSON.stringify({a: 1, b: 'Textual content'})
+  // // });
+  // // const content = rawResponse.json();
 
-  // console.log(content);
+  // // console.log(content);
 
 
 
-  }
+  // }
 
 import { onMount } from 'svelte'
 import AOS from 'aos'
@@ -135,7 +123,7 @@ import AOS from 'aos'
       <p data-aos="fade-up">{@html $sitewideData.entry.address.replace(/\n/g, "<br />")}</p>
       <p data-aos="fade-up">{$sitewideData.entry.tel}<br><a href="mailto:">{$sitewideData.entry.email}</a></p>
     </div>
-
+    <!--
     <div class="sendmessage {formSubmitted ? 'sent' : ''}" data-aos="fade-up">
       <h2>Send a message</h2>
       <form>
@@ -147,6 +135,7 @@ import AOS from 'aos'
         <button on:click|preventDefault="{ () => { submitForm() }}" disabled='{formSubmitted}'>Send</button>
       </form>
     </div>
+  -->
 
     {#if formSubmitted}
       <div class="successmessage" in:slide="{{ duration: 300 }}">
