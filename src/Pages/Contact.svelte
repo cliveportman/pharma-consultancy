@@ -13,37 +13,49 @@
   let formSubmitted = false
 
   function submitForm() {
+
     console.log(firstName)
     console.log(lastName)
     console.log(email)
     console.log(tel)
     console.log(message)
-    formSubmitted = true
 
-    
+
+    formSubmitted = true    
 
     const formData = {
-    "name": "Ginger",
-  }
-  let options = {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: formData
-  }
+      "message": "Ginger",
+    }
+    const jsonString = JSON.stringify(formData)
+    //const jsonParsed = JSON.parse(formData)
+    const jsonParsed = JSON.parse(jsonString)
+    console.log(jsonParsed)
+
+    let options = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: jsonString
+    }
+    fetch("https://silly-leavitt-9429a2.netlify.app/.netlify/functions/sendgrid", options)
+    .then( (resp) => resp.json() )
+    .then(function(json) {
+
+      console.log(json)
+
+    })
+    .catch(console.error);
+
+
+
+
+    
   // const string = JSON.stringify(formData)
   // const json = JSON.parse(string)
   // console.log(json.email)
   // console.log("https://silly-leavitt-9429a2.netlify.app/.netlify/functions/hello?data=" + string)
 
 
-  // fetch("https://silly-leavitt-9429a2.netlify.app/.netlify/functions/hello", options)
-  // .then( (resp) => resp.json() )
-  // .then(function(json) {
 
-  //   console.log(json)
-
-  //  })
-  // .catch(console.error);
 
   
   // const rawResponse = fetch('https://httpbin.org/post', {
