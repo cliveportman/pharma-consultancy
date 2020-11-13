@@ -27,6 +27,8 @@
   let videoElement
   let speed = 0.75
   let paused = true
+  let startTime = 1.5
+  let endTime = 4
 
   onMount(() => {
     AOS.init();
@@ -42,7 +44,25 @@
     }
   }
 
-  $: if (videoElement) setTimeout(() => { videoElement.play() }, 1)
+  //$: if (videoElement) setTimeout(() => { videoElement.play() }, 1)
+
+  $: if (videoElement) playVideo()
+  function playVideo() {
+
+    function checkTime() {
+        if (videoElement.currentTime >= endTime) {
+          videoElement.pause();
+        } else {
+          /* call checkTime every 1/10th 
+              second until endTime */
+          setTimeout(checkTime, 100);
+        }
+    }
+
+    videoElement.currentTime = startTime;
+    videoElement.play();
+    checkTime();
+  }
 
 </script>
 <svelte:window bind:innerWidth="{width}" bind:innerHeight="{height}"/>
@@ -52,8 +72,10 @@
   <section class="splash">
     <h1>
       <div>      
-          <span class="line1" data-aos="fade-right" data-aos-delay="1500">Evidence & Access</span>
-          <span class="line2" data-aos="fade-right" data-aos-delay="2400">Integrated</span>
+          <span class="line1">
+            <span data-aos="fade-right" data-aos-delay="1500">E</span><span data-aos="fade-right" data-aos-delay="1550">v</span><span data-aos="fade-right" data-aos-delay="1600">i</span><span data-aos="fade-right" data-aos-delay="1650">d</span><span data-aos="fade-right" data-aos-delay="1700">e</span><span data-aos="fade-right" data-aos-delay="1750">n</span><span data-aos="fade-right" data-aos-delay="1800">c</span><span data-aos="fade-right" data-aos-delay="1850">e</span><span data-aos="fade-right" data-aos-delay="1900"> & </span><span data-aos="fade-right" data-aos-delay="1950">A</span><span data-aos="fade-right" data-aos-delay="2000">c</span><span data-aos="fade-right" data-aos-delay="2050">c</span><span data-aos="fade-right" data-aos-delay="2100">e</span><span data-aos="fade-right" data-aos-delay="2150">s</span><span data-aos="fade-right" data-aos-delay="2200">s</span>
+          </span>
+          <span class="line2" data-aos="fade-right" data-aos-delay="3000">Integrated</span>
       </div>
     </h1>
     <video src="{videoUrl}" bind:playbackRate="{speed}" bind:paused="{paused}" bind:this={videoElement} allow="autoplay" muted>
@@ -64,7 +86,7 @@
   <div class="container">
     <section class="textblocks">
       {#each $pageData.entry.threeTextBlocks as block, index}
-        <div class="textblock" data-aos="fade-up" data-aos-delay="{index * 300}">
+        <div class="textblock" data-aos="fade-up" data-aos-delay="{index * 300}" data-aos-offset="0">
           <h2>{block.heading}</h2>
           {@html block.text}
         </div>
@@ -109,14 +131,15 @@
   }
   
     span {
-      display: block;
       
     }
     .line1 {
       font-weight: 600;
+      display: block;
     }
     .line2 {
       font-weight: 100;
+      display: block;
     }
 
   video {
