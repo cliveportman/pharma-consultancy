@@ -44,7 +44,7 @@ const headers = {
   'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
 };
 
-import querystring from "querystring";
+//import querystring from "querystring";
 
 exports.handler = async (event, context, callback) => {
   // Only allow POST
