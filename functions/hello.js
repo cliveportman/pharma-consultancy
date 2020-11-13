@@ -46,7 +46,7 @@ const headers = {
 
 import querystring from "querystring";
 
-exports.handler = async (event, context) => {
+exports.handler = async (event, context, callback) => {
   // Only allow POST
   if (event.httpMethod !== "POST") {
     return { statusCode: 405, body: "Method Not Allowed" };
@@ -58,9 +58,9 @@ exports.handler = async (event, context) => {
     const returnData = {
       "message": "Hi!"
     };
-  return {
+  callback(null, {
     statusCode: 200,
     headers: headers,
     body: JSON.stringify(returnData)
-  };
+  });
 };
