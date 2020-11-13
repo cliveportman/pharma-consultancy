@@ -7,23 +7,28 @@ const headers = {
 };
 
 
-const {
-  SENDGRID_API_KEY,
-  SENDGRID_SENDER_EMAIL,
-  SENDGRID_SENDER_NAME
-} = process.env
 
-const json = [{
-  "key": SENDGRID_API_KEY,
-  "email": SENDGRID_SENDER_EMAIL,
-  "name": SENDGRID_SENDER_NAME
-}];
 
 exports.handler = function(event, context, callback) {
+
+  const {
+    SENDGRID_API_KEY,
+    SENDGRID_SENDER_EMAIL,
+    SENDGRID_SENDER_NAME
+  } = process.env
+  
+  const json = [{
+    "key": SENDGRID_API_KEY,
+    "email": SENDGRID_SENDER_EMAIL,
+    "name": SENDGRID_SENDER_NAME
+  }];
+
+
   callback(null, {
     statusCode: 200,
     headers: headers,
     body: JSON.stringify(json)
   });
+  
 };
 
