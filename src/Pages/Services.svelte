@@ -69,7 +69,7 @@
     
   <div class="container">
     <div class="intro">
-      <h2>Evidence & Access<br> - Integrated</h2>
+      <h2>Evidence & Access<br> — Integrated</h2>
       {@html $pageData.entry.paragraph2}
       {@html $pageData.entry.paragraph1}
     </div>

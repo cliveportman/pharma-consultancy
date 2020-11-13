@@ -25,7 +25,7 @@
 
   {#if caseStudy.caseStudySummary}
   <div class="summary">
-    {@html caseStudy.caseStudySummary}
+    <p>{@html caseStudy.caseStudySummary.replace(/\n/g, "<br />")}</p>
   </div>
   {/if}
   
@@ -43,6 +43,7 @@
 
   {#if visible}
   <div class="casestudy-detail">
+    <a href="{caseStudy.pdf[0].url}" class="download">Download PDF</a>
     <CaseStudyChallenge caseStudy="{caseStudy}"/>
     <CaseStudyProject caseStudy="{caseStudy}"/>
     <CaseStudySolution caseStudy="{caseStudy}"/>
@@ -89,7 +90,6 @@
   }
   @media (min-width: 1024px) {
     .summary {
-      padding-left: 8.3333%; padding-right: 50%;
     }
   }
 
@@ -229,6 +229,32 @@
     padding-top: 2rem; height: 8rem;
   } 
 }
+
+
+
+
+
+
+
+
+.download {
+      display: block;
+      margin-top: -1rem;
+      color: #BD1622; font-size: 1.4rem; text-transform: uppercase; text-decoration: none;
+      text-align: right; font-weight: 700;
+
+    }
+    .download:focus, .download:hover, .download:active {
+      text-decoration: underline;
+    }
+    .download:after {
+      content: "";
+      display: inline-block; width: 3rem; height: 3rem;
+      margin-left: 2rem;
+      border-top: 1px solid #BD1622; border-right: 1px solid #BD1622;
+      transform: rotate(135deg);
+
+    }
 </style>
 
 

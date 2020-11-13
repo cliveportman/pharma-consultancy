@@ -15,7 +15,7 @@ query getCaseStudies {
         slug
       }
       title
-      summary
+      caseStudySummary
       pdf {
         ...on downloads_Asset {
           url
@@ -27,7 +27,7 @@ query getCaseStudies {
         slug
       }
       title
-      summary
+      caseStudySummary
       pdf {
         ...on downloads_Asset {
           url

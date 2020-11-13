@@ -49,7 +49,7 @@ gtag('config', 'UA-26565851-1', {
   </div>
 
   <div class="container">
-    <div class="copy" data-aos="fade-up">
+    <div class="copy">
       {@html $pageData.entry.copy}
     </div>    
   </div>

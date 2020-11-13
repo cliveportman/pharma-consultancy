@@ -21,6 +21,10 @@ p {
   @media (min-width: 1024px) {
     font-size: 1.7rem;
   }
+
+  strong {
+    font-weight: 700;
+  }
 }
 
 h1 {
@@ -81,6 +85,10 @@ li {
 
   @media (min-width: 1024px) {
     font-size: 1.7rem;
+  }
+
+  strong {
+    font-weight: 700;
   }
 }
 

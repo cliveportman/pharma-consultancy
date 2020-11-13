@@ -9,7 +9,7 @@
 
 <h4>Testimonial</h4>
 <div class="testimonial">
-  <div class="arrow">{@html caseStudy.arrowText.replace(/\n/g, "<br />")}</div>
+  <div class="arrow"><p>{@html caseStudy.arrowText.replace(/\n/g, "<br />")}</p></div>
   <blockquote>
     <p><span>“</span> {caseStudy.quote} <span>”</span></p>
   </blockquote>
@@ -29,10 +29,18 @@
 }
   .arrow {
     position: relative;
-    display: block; height: 8rem; width: 35%;
-    padding: 1rem  1rem 5rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 8rem; width: 25%;
+    padding: 0  1rem 0;
     background: #E74A1E;
-    color: white; font-size: 1.6rem;
+    
+  }
+  .arrow p {
+    display: block;
+    margin-bottom: 0;
+    line-height: 1em; color: white; font-size: 1.6rem;
   }
   .arrow:after {
     position: absolute; right: -2rem; top: 0;
@@ -44,7 +52,7 @@
     border-left: 20px solid #E74A1E;
   }
   blockquote {
-    width: 55%;
+    width: 70%;
     margin-left: 6rem;
     padding: 0 0 2rem 0;
   }

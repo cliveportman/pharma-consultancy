@@ -24,6 +24,11 @@ query getServices {
         ... on caseStudies_long_Entry {
           title
           caseStudySummary
+          pdf {
+            ...on downloads_Asset {
+              url
+            }
+          }
           challengeDetails {
             ... on challengeDetails_block_BlockType {
               heading

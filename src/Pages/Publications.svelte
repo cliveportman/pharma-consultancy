@@ -123,7 +123,7 @@ gtag('config', 'UA-26565851-1', {
       content: "";
       display: inline-block; width: 3rem; height: 3rem;
       margin-left: 2rem;
-      border-top: 1px solid #5C6A99; border-right: 1px solid #5C6A99;
+      border-top: 1px solid #BD1622; border-right: 1px solid #BD1622;
       transform: rotate(135deg); 
 
     }

@@ -72,7 +72,7 @@
 @media (min-width: 768px) {
   .header {
     padding-left: 8.3333%; padding-right: 8.3333%;
-  padding-top: 4rem;
+  padding-bottom: 4rem;
   }
   .copy {
     padding-left: 16.6666%; padding-right: 16.6666%;

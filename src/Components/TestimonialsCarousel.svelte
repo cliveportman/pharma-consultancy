@@ -9,6 +9,7 @@
 <section>
 <Carousel
     perPage="1"
+    autoplay="10000"
 >
     <span class="control prev" slot="left-control">Prev</span>
 
@@ -89,7 +90,7 @@
       position: relative;
       display: block; width: 4rem; height: 4rem;
       border-top: 1px solid white; border-left: 1px solid white;
-      border-color: #1d1d1d;
+      border-color: #ffffff;
       text-indent: -9999px;
     }
     .control.prev {

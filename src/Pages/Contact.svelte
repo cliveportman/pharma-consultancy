@@ -29,8 +29,8 @@ import AOS from 'aos'
   import { mapStyles } from '../Components/map-styles';
 	let container;
 	let map;
-	let zoom = 8;
-    let center = {lat: -34.397, lng: 150.644};
+	let zoom = 14;
+  let center = {lat: 52.201780, lng: 0.124703} 
     
     
 	onMount(async () => {
@@ -39,13 +39,19 @@ import AOS from 'aos'
 			center,
 			styles: mapStyles // optional
     });
+    let image = '/img/map-icon.png';
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(52.201780, 0.124703),
+            map: map,
+            title: "Cogentia",
+      icon: image
+        });
 
     const hash = window.location.hash.substr(1)
     if (hash.length) {
       const element = document.getElementById(hash);
       element.scrollIntoView()
     }
-    console.log(hash)
 
     
   AOS.init();
@@ -69,7 +75,7 @@ import AOS from 'aos'
   //  })
   // .catch(console.error);
 
-    export let currentRoute
+  export let currentRoute
   gtag('config', 'UA-26565851-1', {
     'page_title' : 'contact',
     'page_path': currentRoute.path
@@ -93,7 +99,7 @@ import AOS from 'aos'
       <p data-aos="fade-up">{$sitewideData.entry.tel}<br><a href="mailto:">{$sitewideData.entry.email}</a></p>
     </div>
 
-    <div class="sendmessage {formSubmitted ? 'sent' : ''}" out:slide="{{ duration: 300 }}" data-aos="fade-up">
+    <div class="sendmessage {formSubmitted ? 'sent' : ''}" data-aos="fade-up">
       <h2>Send a message</h2>
       <form>
         <input type="text" placeholder="FIRST NAME*" bind:value={firstName}>
@@ -134,7 +140,7 @@ import AOS from 'aos'
   @media (min-width: 768px) {
 
     .contacts {
-      padding: 0 8.3333%;
+      padding: 4rem 8.3333% 4rem;
       margin-bottom: 2rem;;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
