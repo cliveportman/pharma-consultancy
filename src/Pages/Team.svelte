@@ -6,8 +6,11 @@
 
   export let currentRoute  
   let token = currentRoute.queryParams.token
+  let queryUrl
+  if (token) queryUrl = url + '?token=' + token
+  else queryUrl = url
 
-  fetch(url + '?token='+token, options(query))
+  fetch(queryUrl, options(query))
   .then( (resp) => resp.json() )
   .then(function(json) {
     console.log(json.data)
@@ -19,24 +22,40 @@
    })
   .catch(console.error);
 
+
+  import { onMount } from 'svelte'
+  import AOS from 'aos'
+  onMount(() => {
+    AOS.init();
+  });
+
+gtag('config', 'UA-26565851-1', {
+  'page_title' : 'team',
+  'page_path': currentRoute.path
+});
+
 </script>
+
+<svelte:head>
+  <title>Team / Cogentia</title>
+</svelte:head>
 
 
 {#if $pageData}
   <h1>Team</h1>
   <div class="container">
 
-    <div class="introduction">
+    <div class="introduction" data-aos="fade-up">
       {@html $pageData.entry.introduction}
     </div>
 
     {#each $pageData.categories as category}
       <div class="category">
-        <h2>{ category.title}</h2>
+        <h2 data-aos="fade-up">{ category.title}</h2>
         <div class="people">
           {#each $pageData.entries as person}
           {#if person.team[0].slug == category.slug}
-            <div class="person">
+            <div class="person" data-aos="fade-up">
               <header>
                 <img src="{person.portrait[0].url}" alt="{person.title}">
                 <div class="titles">

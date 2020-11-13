@@ -7,8 +7,11 @@
   export let currentRoute
   $: slug = currentRoute.namedParams.slug
   let token = currentRoute.queryParams.token
+  let queryUrl
+  if (token) queryUrl = url + '?token=' + token
+  else queryUrl = url
 
-  fetch(url + '?token='+token, options(query))
+  fetch(queryUrl, options(query))
   .then( (resp) => resp.json() )
   .then(function(json) {
 
@@ -29,7 +32,19 @@
     AOS.init();
   });
 
+  gtag('config', 'UA-26565851-1', {
+    'page_title' : 'page',
+    'page_path': currentRoute.path
+  });
+
+
+
 </script>
+
+<svelte:head>
+  <title>Cogentia</title>
+</svelte:head>
+
 {#if $pagesData}
   {#each $pagesData.entries as page}
   {#if page.slug == slug}
@@ -57,6 +72,7 @@
 @media (min-width: 768px) {
   .header {
     padding-left: 8.3333%; padding-right: 8.3333%;
+  padding-top: 4rem;
   }
   .copy {
     padding-left: 16.6666%; padding-right: 16.6666%;
@@ -82,5 +98,12 @@
   }
   :global(.copy ul li:before) {
     border-left: 10px solid #BD1622;
-  }
+  }:global(.copy li li:before) {
+  content: "-";
+  position: absolute; left: 0; top: 0;
+  display: block; width: 0; height: 0;
+  margin: 0rem 0.5rem 0 0;
+  border: none;
+  
+}
   </style>

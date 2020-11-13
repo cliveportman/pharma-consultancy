@@ -6,11 +6,11 @@
 
 
 
-<div class="project-types container"  data-aos="fade-up">
+<div class="project-types"  data-aos="fade-up">
   <h3>Project types:</h3>
   <ul>
     {#each service.projectTypes as bullet, index}
-      <li><span class="border"><span class="triangle"></span><span class="text">{bullet.item}</span></span></li>
+      <li>{bullet.item}</li>
     {/each}
   </ul>
 </div>
@@ -28,23 +28,9 @@
   margin: 0; padding: 0;
 
 }
-
-.project-types li .border {
-  display: inline-block;
-  padding-bottom: 0.5rem;
+.project-types li {
+  padding-bottom: 0.8rem;
   border-bottom: 1px solid var(--colour2);
-}
-.project-types span.triangle {
-  content: "";
-  float: left;
-  display: block; width: 0; height: 0;
-  margin: 0.2rem .5rem 0 0;
-  border-top: 5px solid transparent; border-bottom: 5px solid transparent;  
-  border-left: 10px solid var(--colour1);
-}
-.project-types span.text {
-  float: left;
-  max-width: calc(100% - 3rem);
 }
 
 @media (min-width: 768px) {
@@ -56,7 +42,25 @@
     width: 38rem;
     margin: 0 auto;
   }
-  .project-types li .border {
-  }
 }
+
+
+.project-types ul li {
+    position: relative;
+    margin-bottom: 1rem;
+    padding-left: 2rem;
+    list-style-type: none;
+    font-size: 1.6rem; line-height: 1.2em;
+  }
+  .project-types ul li:before {
+    content: "";
+    position: absolute; left: 0; top: 0.25rem;
+    display: block; width: 0; height: 0;
+    margin: 0.2rem 0.5rem 0 0;
+    border-top: 5px solid transparent; border-bottom: 5px solid transparent;  
+    
+  }
+  .project-types ul li:before {
+    border-left: 10px solid var(--colour1);
+  }
 </style>

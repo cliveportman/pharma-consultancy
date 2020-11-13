@@ -23,9 +23,11 @@
     <h3>{caseStudy.title}</h3>
   </header>
 
+  {#if caseStudy.caseStudySummary}
   <div class="summary">
-    {@html caseStudy.summary}
+    {@html caseStudy.caseStudySummary}
   </div>
+  {/if}
   
   <div class="casestudy-toggle" on:click="{ () => { visible = !visible} }">    
     <div class="icons">
@@ -212,6 +214,14 @@
 :global(.casestudy-detail span.text) {
   float: left;
   max-width: calc(100% - 3rem);
+}
+:global(.casestudy-detail li li:before) {
+  content: "-";
+  position: absolute; left: 0; top: 0;
+  display: block; width: 0; height: 0;
+  margin: 0rem 0.5rem 0 0;
+  border: none;
+  
 }
 
 @media (min-width: 768px) {

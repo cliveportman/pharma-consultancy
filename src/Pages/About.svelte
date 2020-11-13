@@ -7,8 +7,11 @@
 
   export let currentRoute  
   let token = currentRoute.queryParams.token
+  let queryUrl
+  if (token) queryUrl = url + '?token=' + token
+  else queryUrl = url
 
-  fetch(url + '?token='+token, options(query))
+  fetch(queryUrl, options(query))
   .then( (resp) => resp.json() )
   .then(function(json) {
     
@@ -26,7 +29,16 @@
     AOS.init();
   });
 
+gtag('config', 'UA-26565851-1', {
+  'page_title' : 'about',
+  'page_path': currentRoute.path
+});
+
 </script>
+
+<svelte:head>
+  <title>About / Cogentia</title>
+</svelte:head>
 
 {#if $pageData}
 

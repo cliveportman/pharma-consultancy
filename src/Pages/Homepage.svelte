@@ -8,8 +8,11 @@
 
   export let currentRoute  
   let token = currentRoute.queryParams.token
+  let queryUrl
+  if (token) queryUrl = url + '?token=' + token
+  else queryUrl = url
 
-  fetch(url + '?token='+token, options(query))
+  fetch(queryUrl, options(query))
   .then( (resp) => resp.json() )
   .then(function(json) {
 
@@ -64,9 +67,20 @@
     checkTime();
   }
 
+
+  gtag('config', 'UA-26565851-1', {
+    'page_title' : 'homepage',
+    'page_path': currentRoute.path
+  });
+
+  
+
 </script>
 <svelte:window bind:innerWidth="{width}" bind:innerHeight="{height}"/>
 
+<svelte:head>
+  <title>Cogentia</title>
+</svelte:head>
 
 {#if $pageData}
   <section class="splash">

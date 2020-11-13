@@ -15,8 +15,11 @@
   let visibleService
   export let currentRoute  
   let token = currentRoute.queryParams.token
+  let queryUrl
+  if (token) queryUrl = url + '?token=' + token
+  else queryUrl = url
 
-  fetch(url + '?token='+token, options(query))
+  fetch(queryUrl, options(query))
   .then( (resp) => resp.json() )
   .then(function(json) {
 
@@ -45,8 +48,19 @@
   }
 
 
+  gtag('config', 'UA-26565851-1', {
+    'page_title' : 'services',
+    'page_path': currentRoute.path
+  });
+
 
 </script>
+
+
+
+<svelte:head>
+  <title>Services / Cogentia</title>
+</svelte:head>
 
 
 {#if $pageData}
@@ -288,7 +302,7 @@
   }
   :global(.service-toggle h2) {
     top: 7rem;
-    font-size: 1.8rem;
+    font-size: 1.8rem; padding: 0 4rem;
   }
   :global(.service:nth-child(1) .service-toggle) {
     left: 2rem;

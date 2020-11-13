@@ -6,8 +6,11 @@
 
   export let currentRoute  
   let token = currentRoute.queryParams.token
+  let queryUrl
+  if (token) queryUrl = url + '?token=' + token
+  else queryUrl = url
 
-  fetch(url + '?token='+token, options(query))
+  fetch(queryUrl, options(query))
   .then( (resp) => resp.json() )
   .then(function(json) {
 
@@ -24,9 +27,18 @@
   import AOS from 'aos'
   onMount(() => {
     AOS.init();
+  });  
+  
+  gtag('config', 'UA-26565851-1', {
+    'page_title' : 'case-studies',
+    'page_path': currentRoute.path
   });
 
 </script>
+
+<svelte:head>
+  <title>Case Studies / Cogentia</title>
+</svelte:head>
 
 
 {#if $pageData}

@@ -69,8 +69,17 @@ import AOS from 'aos'
   //  })
   // .catch(console.error);
 
+    export let currentRoute
+  gtag('config', 'UA-26565851-1', {
+    'page_title' : 'contact',
+    'page_path': currentRoute.path
+  });
 
 </script>
+
+<svelte:head>
+  <title>Contact / Cogentia</title>
+</svelte:head>
 
 
 {#if $sitewideData}
