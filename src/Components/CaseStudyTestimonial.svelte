@@ -9,7 +9,7 @@
 
 <h4>Testimonial</h4>
 <div class="testimonial">
-  <div class="arrow">{caseStudy.arrowText.replace(/\n/g, "<br />")}</div>
+  <div class="arrow">{@html caseStudy.arrowText.replace(/\n/g, "<br />")}</div>
   <blockquote>
     <p><span>“</span> {caseStudy.quote} <span>”</span></p>
   </blockquote>

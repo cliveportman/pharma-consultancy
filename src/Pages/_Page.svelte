@@ -81,6 +81,6 @@
     
   }
   :global(.copy ul li:before) {
-    border-left: 10px solid #5C6A99;
+    border-left: 10px solid #BD1622;
   }
   </style>

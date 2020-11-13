@@ -25,7 +25,7 @@
   let height
   let videoUrl
   let videoElement
-  let speed = 2
+  let speed = 0.75
   let paused = true
 
   onMount(() => {
@@ -52,8 +52,8 @@
   <section class="splash">
     <h1>
       <div>      
-          <span class="line1" data-aos="fade-left" data-aos-delay="1500">Evidence & Access</span>
-          <span class="line2" data-aos="fade-left" data-aos-delay="1800">Integrated</span>
+          <span class="line1" data-aos="fade-right" data-aos-delay="1500">Evidence & Access</span>
+          <span class="line2" data-aos="fade-right" data-aos-delay="2400">Integrated</span>
       </div>
     </h1>
     <video src="{videoUrl}" bind:playbackRate="{speed}" bind:paused="{paused}" bind:this={videoElement} allow="autoplay" muted>
@@ -64,7 +64,7 @@
   <div class="container">
     <section class="textblocks">
       {#each $pageData.entry.threeTextBlocks as block, index}
-        <div class="textblock" data-aos="fade-up" data-aos-delay="{index * 150}">
+        <div class="textblock" data-aos="fade-up" data-aos-delay="{index * 300}">
           <h2>{block.heading}</h2>
           {@html block.text}
         </div>
