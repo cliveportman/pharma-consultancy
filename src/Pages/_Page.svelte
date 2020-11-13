@@ -1,9 +1,7 @@
 <script>
-  import { onMount } from 'svelte'
   import { url, options, pagesData } from '../stores/global-store'
   import { query } from '../stores/graphql-queries/pages-query'
   import LoadingIcon from '../Components/LoadingIcon.svelte';
-  import AOS from 'aos'
   import TestimonialsCarousel from '../Components/TestimonialsCarousel.svelte'
 
   export let currentRoute
@@ -24,9 +22,12 @@
    })
   .catch(console.error);
 
-  // onMount(() => {
-  //   AOS.init();
-  // });
+
+  import { onMount } from 'svelte'
+  import AOS from 'aos'
+  onMount(() => {
+    AOS.init();
+  });
 
 </script>
 {#if $pagesData}
