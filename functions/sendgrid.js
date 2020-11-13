@@ -8,7 +8,7 @@ function sendEmail(client, message, senderEmail, senderName) {
         name: senderName
       },
       subject: 'Netlify Function - Sendgrid Email',
-      to: 'clive@theportman.co',
+      to: 'your.email@here.com',
       html: `Hey, you\'ve sent an email from Netlify Functions<br/>Message: ${message}`
     }
 
@@ -42,26 +42,24 @@ exports.handler = function(event, context, callback) {
     "message": "Hi!"
   };
 
-  console.log(event)
-  const body = JSON.parse(event.body)
-  const message = body.message
-
-  client.setApiKey(SENDGRID_API_KEY)
-
-  sendEmail(
-    client,
-    message,
-    SENDGRID_SENDER_EMAIL,
-    SENDGRID_SENDER_NAME
-  )
-  .then(response => callback(null, { statusCode: response.statusCode }))
-  .catch(err => callback(err, null))
-  
-
   callback(null, {
     statusCode: 200,
     headers: headers,
     body: JSON.stringify(returnData)
   });
 
+  // console.log(event)
+  // const body = JSON.parse(event.body)
+  // const message = body.message
+
+  // client.setApiKey(SENDGRID_API_KEY)
+
+  // sendEmail(
+  //   client,
+  //   message,
+  //   SENDGRID_SENDER_EMAIL,
+  //   SENDGRID_SENDER_NAME
+  // )
+  // .then(response => callback(null, { statusCode: response.statusCode }))
+  // .catch(err => callback(err, null))
 }
