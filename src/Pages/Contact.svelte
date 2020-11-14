@@ -12,6 +12,57 @@
 
   let formSubmitted = false
 
+
+
+function submitForm() {
+
+  const url = "https://cogentia.co.uk/.netlify/functions/sendgrid"
+  const data = {
+    "name": "Ginger",
+  }
+
+  let options = {
+    method: "POST",
+    headers: { "Content-Type": "multipart/form-data" },
+    body: JSON.stringify(data)
+  }
+  fetch(url, options)
+  .then( (resp) => resp.json() )
+  .then(function(json) {
+
+    console.log(json)
+
+  })
+  .catch(console.error);
+
+
+}
+
+  // function submitForm() {
+
+  //   let data = new FormData()
+  //   data.append("fromEmail", email);
+  //   data.append("message", "Yo, dude!")
+
+  //   const url = "https://cogentia.theportman.co/actions/contact-form/send"
+
+  //   let options = {
+  //     method: "POST",
+  //     headers: { "Content-Type": "multipart/form-data" },
+  //     body: data
+  //   }
+  //   fetch(url, options)
+  //   .then( (resp) => resp.json() )
+  //   .then(function(json) {
+
+  //     console.log(json)
+
+  //   })
+  //   .catch(console.error);
+
+
+  // }
+
   // function submitForm() {
   //   console.log(firstName)
   //   console.log(lastName)
@@ -123,7 +174,10 @@ import AOS from 'aos'
       <p data-aos="fade-up">{@html $sitewideData.entry.address.replace(/\n/g, "<br />")}</p>
       <p data-aos="fade-up">{$sitewideData.entry.tel}<br><a href="mailto:">{$sitewideData.entry.email}</a></p>
     </div>
-    <!--
+
+
+    <!---------
+    
     <div class="sendmessage {formSubmitted ? 'sent' : ''}" data-aos="fade-up">
       <h2>Send a message</h2>
       <form>
@@ -135,7 +189,8 @@ import AOS from 'aos'
         <button on:click|preventDefault="{ () => { submitForm() }}" disabled='{formSubmitted}'>Send</button>
       </form>
     </div>
-  -->
+    --------->
+  
 
     {#if formSubmitted}
       <div class="successmessage" in:slide="{{ duration: 300 }}">
