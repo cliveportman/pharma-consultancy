@@ -108,7 +108,7 @@ import AOS from 'aos'
 
   
     
-    <div class="sendmessage {formSubmitted ? 'sent' : ''}" data-aos="fade-up">
+    <div class="sendmessage {formSubmitted ? 'sent' : ''}">
       <h2>Send a message</h2>
       <form>
         <input type="text" placeholder="FIRST NAME*" bind:value={firstName} required>
