@@ -1,4 +1,5 @@
 const client = require('@sendgrid/mail')
+let parse = require( 'body-parser')
 
 client.setApiKey(process.env.SENDGRID_API_KEY)
 
@@ -29,7 +30,7 @@ exports.handler = function(event, context, callback) {
 
   const body = JSON.parse(event.body)
   const message = body.message
-  
+
   const headers = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Headers': 'Content-Type',
