@@ -18,13 +18,15 @@ function submitForm() {
 
   const url = "https://cogentia.co.uk/.netlify/functions/sendgrid"
   const data = {
-    "message": "Ginger",
+    message: "Ginger",
   }
+  let dataString = JSON.stringify(data)
+  console.log(dataString)
 
   let options = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data)
+    body: dataString
   }
   fetch(url, options)
   .then( (resp) => resp.json() )
@@ -176,8 +178,8 @@ import AOS from 'aos'
     </div>
 
 
-    <!---------
-    
+  
+    <!--
     <div class="sendmessage {formSubmitted ? 'sent' : ''}" data-aos="fade-up">
       <h2>Send a message</h2>
       <form>
@@ -189,7 +191,8 @@ import AOS from 'aos'
         <button on:click|preventDefault="{ () => { submitForm() }}" disabled='{formSubmitted}'>Send</button>
       </form>
     </div>
-    --------->
+  -->
+    
   
 
     {#if formSubmitted}
