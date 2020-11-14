@@ -29,6 +29,12 @@ exports.handler = function(event, context, callback) {
 
   const body = JSON.parse(event.body)
   const message = body.message
+  
+  const headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
+  };
 
   sendEmail(
     client,
@@ -36,6 +42,10 @@ exports.handler = function(event, context, callback) {
     'clive@theportman.co',
     'Clive Portman'
   )
-  .then(response => callback(null, { statusCode: response.statusCode }))
+  .then(response => callback(null, { 
+    statusCode: response.statusCode,  
+    headers: headers,
+    body: JSON.stringify({"Success": true})
+   }))
   .catch(err => callback(err, null))
 }
