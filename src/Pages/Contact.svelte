@@ -18,12 +18,12 @@ function submitForm() {
 
   const url = "https://cogentia.co.uk/.netlify/functions/sendgrid"
   const data = {
-    "name": "Ginger",
+    "message": "Ginger",
   }
 
   let options = {
     method: "POST",
-    headers: { "Content-Type": "multipart/form-data" },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data)
   }
   fetch(url, options)
