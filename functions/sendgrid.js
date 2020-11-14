@@ -25,6 +25,16 @@ function sendEmail(client, message, senderEmail, senderName) {
 }
 
 exports.handler = function(event, context, callback) {
+ 
+  if (event.httpMethod !== 'POST') {
+    return {
+      statusCode: 400,
+      body: 'You are not using a http POST method for this endpoint.',
+      headers: {
+        'Allow': 'POST'
+      }
+    }
+  }
 
   console.log(event)
 
