@@ -41,7 +41,8 @@ exports.handler = function(event, context, callback) {
   )
   .then(response => callback(null, { 
     statusCode: response.statusCode,  
-    headers: headers
+    headers: headers,
+    body: JSON.stringify({"Success": true})
    }))
   .catch(err => callback(err, null))
 }
