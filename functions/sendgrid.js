@@ -1,19 +1,39 @@
-const sendgrid = require('@sendgrid/mail')
+const client = require('@sendgrid/mail')
 
-sendgrid.setApiKey(process.env.SENDGRID_API_KEY)
+client.setApiKey(process.env.SENDGRID_API_KEY)
 
-const msg = {
-  to: 'clive@theportman.co', // Change to your recipient
-  from: 'clive@theportman.co', // Change to your verified sender
-  subject: 'Sending with SendGrid is Fun',
-  text: 'and easy to do anywhere, even with Node.js',
-  html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+function sendEmail(client, message, senderEmail, senderName) {
+  return new Promise((fulfill, reject) => {
+    const data = {
+      from: {
+        email: senderEmail,
+        name: senderName
+      },
+      subject: 'Netlify Function - Sendgrid Email',
+      to: 'clive@theportman.co',
+      html: `Hey, you\'ve sent an email from Netlify Functions<br/>Message: ${message}`
+    }
+
+    client
+      .send(data)
+      .then(([response, body]) => {
+        fulfill(response)
+      })
+      .catch(error => reject(error))
+  })
 }
-sendgrid
-  .send(msg)
-  .then(() => {
-    console.log('Email sent')
-  })
-  .catch((error) => {
-    console.error(error)
-  })
+
+exports.handler = function(event, context, callback) {
+
+  // const body = JSON.parse(event.body)
+  // const message = body.message
+
+  sendEmail(
+    client,
+    message,
+    'clive@theportman.co',
+    'Clive Portman'
+  )
+  .then(response => callback(null, { statusCode: response.statusCode }))
+  .catch(err => callback(err, null))
+}
