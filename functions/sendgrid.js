@@ -30,7 +30,7 @@ exports.handler = function(event, context, callback) {
 
   sendEmail(
     client,
-    message,
+    'This is a message',
     'clive@theportman.co',
     'Clive Portman'
   )
