@@ -13,7 +13,7 @@ exports.handler =  async (event, context, callback) => {
     // }).join("<br><br>");
 
     const msg = {
-        to: SENDGRID_TO_EMAIL,
+        to: 'clive@theportman.co',
         from: 'clive@theportman.co',
         subject: 'Contact Form Submission',
         html: 'Hello',
