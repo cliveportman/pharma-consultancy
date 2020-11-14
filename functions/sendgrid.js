@@ -7,10 +7,10 @@ function sendEmail(client, message, senderEmail, senderName) {
   return new Promise((fulfill, reject) => {
     const data = {
       from: {
-        email: senderEmail,
-        name: senderName
+        email: 'clive@theportman.co',
+        name: 'Cogentia'
       },
-      subject: 'Netlify Function - Sendgrid Email',
+      subject: 'Cogentia - contact form submission',
       to: 'clive@theportman.co',
       html: `Hey, you\'ve sent an email from Netlify Functions<br/>Message: ${message}`
     }
@@ -26,15 +26,6 @@ function sendEmail(client, message, senderEmail, senderName) {
 
 exports.handler = function(event, context, callback) {
  
-  if (event.httpMethod !== 'POST') {
-    return {
-      statusCode: 400,
-      body: 'You are not using a http POST method for this endpoint.',
-      headers: {
-        'Allow': 'POST'
-      }
-    }
-  }
 
   console.log(event)
 
@@ -51,7 +42,7 @@ exports.handler = function(event, context, callback) {
     client,
     message,
     'clive@theportman.co',
-    'Clive Portman'
+    'Cogentia'
   )
   .then(response => callback(null, { 
     statusCode: response.statusCode,  

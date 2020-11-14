@@ -16,16 +16,18 @@
 
 function submitForm() {
 
+  let emailBody = `First name: ${firstName}<br/>Last name: ${lastName}<br/>Email: ${email}<br/>Tel: ${tel}<br/>Message: ${message}<br/>`
+
   const url = "https://cogentia.co.uk/.netlify/functions/sendgrid"
   const data = {
-    message: "Ginger",
+    message: emailBody,
   }
   let dataString = JSON.stringify(data)
-  console.log(dataString)
 
   let options = {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "text/plain" },
+    mode: "cors",
     body: dataString
   }
   fetch(url, options)
@@ -33,87 +35,13 @@ function submitForm() {
   .then(function(json) {
 
     console.log(json)
+    formSubmitted = true
 
   })
   .catch(console.error);
 
 
 }
-
-  // function submitForm() {
-
-  //   let data = new FormData()
-  //   data.append("fromEmail", email);
-  //   data.append("message", "Yo, dude!")
-
-  //   const url = "https://cogentia.theportman.co/actions/contact-form/send"
-
-  //   let options = {
-  //     method: "POST",
-  //     headers: { "Content-Type": "multipart/form-data" },
-  //     body: data
-  //   }
-  //   fetch(url, options)
-  //   .then( (resp) => resp.json() )
-  //   .then(function(json) {
-
-  //     console.log(json)
-
-  //   })
-  //   .catch(console.error);
-
-
-  // }
-
-  // function submitForm() {
-  //   console.log(firstName)
-  //   console.log(lastName)
-  //   console.log(email)
-  //   console.log(tel)
-  //   console.log(message)
-  //   formSubmitted = true
-
-    
-
-  //   const formData = {
-  //   "name": "Ginger",
-  // }
-  // let options = {
-  //   method: "POST",
-  //   headers: { "Content-Type": "application/json" },
-  //   body: formData
-  // }
-  // // const string = JSON.stringify(formData)
-  // // const json = JSON.parse(string)
-  // // console.log(json.email)
-  // // console.log("https://silly-leavitt-9429a2.netlify.app/.netlify/functions/hello?data=" + string)
-
-
-  // // fetch("https://silly-leavitt-9429a2.netlify.app/.netlify/functions/hello", options)
-  // // .then( (resp) => resp.json() )
-  // // .then(function(json) {
-
-  // //   console.log(json)
-
-  // //  })
-  // // .catch(console.error);
-
-  
-  // // const rawResponse = fetch('https://httpbin.org/post', {
-  // //   method: 'POST',
-  // //   headers: {
-  // //     'Accept': 'application/json',
-  // //     'Content-Type': 'application/json'
-  // //   },
-  // //   body: JSON.stringify({a: 1, b: 'Textual content'})
-  // // });
-  // // const content = rawResponse.json();
-
-  // // console.log(content);
-
-
-
-  // }
 
 import { onMount } from 'svelte'
 import AOS from 'aos'
@@ -179,19 +107,18 @@ import AOS from 'aos'
 
 
   
-    <!--
+    
     <div class="sendmessage {formSubmitted ? 'sent' : ''}" data-aos="fade-up">
       <h2>Send a message</h2>
       <form>
-        <input type="text" placeholder="FIRST NAME*" bind:value={firstName}>
-        <input type="text" placeholder="LAST NAME*" bind:value={lastName}>
-        <input type="email" placeholder="EMAIL*" bind:value={email}>
-        <input type="text" placeholder="PHONE" bind:value={tel}>
-        <textarea rows="10" placeholder="MESSAGE" bind:value={message}></textarea>
+        <input type="text" placeholder="FIRST NAME*" bind:value={firstName} required>
+        <input type="text" placeholder="LAST NAME*" bind:value={lastName} required>
+        <input type="email" placeholder="EMAIL*" bind:value={email} required>
+        <input type="text" placeholder="PHONE" bind:value={tel} required>
+        <textarea rows="10" placeholder="MESSAGE*" bind:value={message} required></textarea>
         <button on:click|preventDefault="{ () => { submitForm() }}" disabled='{formSubmitted}'>Send</button>
       </form>
     </div>
-  -->
     
   
 
