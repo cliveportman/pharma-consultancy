@@ -25,8 +25,8 @@ function sendEmail(client, message, senderEmail, senderName) {
 
 exports.handler = function(event, context, callback) {
 
-  // const body = JSON.parse(event.body)
-  // const message = body.message
+  const body = JSON.parse(event.body)
+  const message = body.message
 
   sendEmail(
     client,
