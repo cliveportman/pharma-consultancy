@@ -1,35 +1,18 @@
-const sgMail = require('@sendgrid/mail')
-const { SENDGRID_API_KEY, SENDGRID_SENDER_EMAIL } = process.env
+const sendgrid = require('@sendgrid/mail')
+sendgrid.setApiKey(process.env.SENDGRID_API_KEY)
 
-exports.handler =  async (event, context, callback) => {
-
-    //const payload = JSON.parse(event.body)
-    //const { email, subject } = payload
-
-    sgMail.setApiKey(SENDGRID_API_KEY)
-
-    // const body = Object.keys(payload).map((k) => {
-    //     return `${k}: ${payload[k]}`
-    // }).join("<br><br>");
-
-    const msg = {
-        to: 'clive@theportman.co',
-        from: 'clive@theportman.co',
-        subject: 'Contact Form Submission',
-        html: 'Hello',
-    };
-
-    try{
-        await sgMail.send(msg)
-        
-        return {
-            statusCode: 200,
-            body: "Message sent"
-        }
-    } catch(e){
-        return {
-            statusCode: e.code,
-            body: e.message
-        }
-    }
-};
+const msg = {
+  to: 'clive@theportman.co', // Change to your recipient
+  from: 'clive@theportman.co', // Change to your verified sender
+  subject: 'Sending with SendGrid is Fun',
+  text: 'and easy to do anywhere, even with Node.js',
+  html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+}
+sendgrid
+  .send(msg)
+  .then(() => {
+    console.log('Email sent')
+  })
+  .catch((error) => {
+    console.error(error)
+  })
