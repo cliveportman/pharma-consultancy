@@ -1,5 +1,5 @@
 const client = require('@sendgrid/mail')
-let parse = require( 'body-parser')
+//let parse = require( 'body-parser')
 
 client.setApiKey(process.env.SENDGRID_API_KEY)
 
