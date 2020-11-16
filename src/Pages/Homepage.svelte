@@ -93,7 +93,7 @@
           <span class="line2" data-aos="fade-right" data-aos-delay="3000">Integrated</span>
       </div>
     </h1>
-    <video src="https://s3.eu-west-1.amazonaws.com/cogentia/images/cogentia-landscape.mp4?mtime=20201103110405&focal=none" bind:playbackRate="{speed}" bind:paused="{paused}" bind:duration="{duration}" bind:this={videoElement} allow="autoplay" muted   playsinline>
+    <video src="https://s3.eu-west-1.amazonaws.com/cogentia/images/cogentia-landscape.mp4?mtime=20201103110405&focal=none" bind:playbackRate="{speed}" bind:paused="{paused}" bind:duration="{duration}" bind:this={videoElement} allow="autoplay" muted   playsinline poster="/img/video-placeholder.jpg">
       <track kind="captions">
     </video>
     <img src="/img/video-placeholder.jpg" alt="">
