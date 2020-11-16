@@ -33,8 +33,10 @@
   let startTime = 1.5
   let endTime = 4
 
+  let pageLoaded = false
   onMount(() => {
-    AOS.init();
+    pageLoaded = true
+    AOS.init()
   });
 
 
@@ -82,7 +84,7 @@
   <title>Cogentia</title>
 </svelte:head>
 
-{#if $pageData}
+{#if $pageData && pageLoaded}
   <section class="splash">
     <h1>
       <div>      
@@ -92,7 +94,7 @@
           <span class="line2" data-aos="fade-right" data-aos-delay="3000">Integrated</span>
       </div>
     </h1>
-    <video src="{videoUrl ? videoUrl : 'https://s3.eu-west-1.amazonaws.com/cogentia/images/cogentia-landscape.mp4?mtime=20201103110405&focal=none'}" bind:playbackRate="{speed}" bind:paused="{paused}" bind:this={videoElement} allow="autoplay" muted autoplay>
+    <video src="{videoUrl ? videoUrl : 'https://s3.eu-west-1.amazonaws.com/cogentia/images/cogentia-landscape.mp4?mtime=20201103110405&focal=none'}" bind:playbackRate="{speed}" bind:paused="{paused}" bind:this={videoElement} allow="autoplay" muted autoplay poster="/img/video-placeholder.jpg">
       <track kind="captions">
     </video>
   </section>
