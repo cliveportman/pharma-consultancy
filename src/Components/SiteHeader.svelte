@@ -14,9 +14,9 @@
         {/each}
     </nav>
     <button class="{ displayNav ? 'open' : ''}" on:click="{ () => { displayNav = !displayNav }}">
-      <span></span>
-      <span></span>
-      <span></span>
+      <div></div>
+      <div></div>
+      <div></div>
     </button>
 </header>
 
@@ -112,24 +112,24 @@
     background: #ccc; border: none; -webkit-appearance: none;
     outline: none;
   }
-  button span {
+  button div {
     display: block; width: 100%; height: 0.2rem;
     background: black;
     transition: all 0.2s;
   }
-  button.open span:first-child {
+  button.open div:first-child {
     position: relative; top: 1.1rem; right: 0.3rem;
     width: 120%;
     transform: rotate(45deg);
     
   }
-  button.open span:nth-child(2) {
+  button.open div:nth-child(2) {
     position: relative; bottom: 1.1rem; right: 0.3rem;
     width: 120%;
     transform: rotate(-45deg);
     
   }
-  button.open span:last-child {
+  button.open div:last-child {
     display: none;
   }
   @media (min-width: 1024px) {
