@@ -26,6 +26,7 @@
 
   import AOS from 'aos'
    let pageLoaded = false
+
   onMount(() => {
     pageLoaded = true
     AOS.init();
@@ -47,7 +48,7 @@ gtag('config', 'UA-26565851-1', {
   <h1>About</h1>
 
   <div class="holder">
-    <img src="/img/cambridge.gif" alt="" class="cambridge">
+    <img src="/img/cambridge.gif" alt="" class="cambridge" width="1200" height="308">
   </div>
 
   <div class="container">
@@ -67,7 +68,7 @@ gtag('config', 'UA-26565851-1', {
 <style>
 
   .cambridge {
-    width: 100vw;
+    width: 100vw; height: auto;
     margin-bottom: 4rem;
   }
 
