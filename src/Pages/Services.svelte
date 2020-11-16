@@ -146,9 +146,9 @@
   }
   :global(.service-toggle button) {
     display: block; width: 4.4rem; height: 4.4rem;
-    margin-right: 1rem; margin-bottom: -0.5rem;
+    margin-right: 1rem; margin-bottom: -0.5rem; padding: 0;
     color: white; font-size: 4rem; line-height: 4.4rem; font-weight: 100;
-    border-radius: 50%; border: none;
+    border-radius: 2.2rem; border: none;
     mix-blend-mode: multiply;
     outline: none;
     background: var(--colour1);
