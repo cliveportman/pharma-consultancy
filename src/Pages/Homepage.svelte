@@ -43,9 +43,7 @@
 
   $: getVideoUrl(width, height);
   function getVideoUrl(width, height) {
-    if (width >= 768) {
-      videoUrl = 'https://s3.eu-west-1.amazonaws.com/cogentia/images/cogentia-landscape.mp4?mtime=20201103110405&focal=none'
-    } else {
+    if (width < 768) {
       videoUrl = 'https://s3.eu-west-1.amazonaws.com/cogentia/images/cogentia-portrait.mp4?mtime=20201103110409&focal=none'
     }
   }
