@@ -22,6 +22,7 @@
   }
   .project-types {
     margin-bottom: 4rem;
+    padding: 0 2rem;
   }
 .project-types ul {
   list-style-type: none;
