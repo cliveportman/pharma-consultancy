@@ -92,7 +92,7 @@
           <span class="line2" data-aos="fade-right" data-aos-delay="3000">Integrated</span>
       </div>
     </h1>
-    <video src="{videoUrl}" bind:playbackRate="{speed}" bind:paused="{paused}" bind:this={videoElement} allow="autoplay" muted>
+    <video src="{videoUrl ? videoUrl : 'https://s3.eu-west-1.amazonaws.com/cogentia/images/cogentia-landscape.mp4?mtime=20201103110405&focal=none'}" bind:playbackRate="{speed}" bind:paused="{paused}" bind:this={videoElement} allow="autoplay" muted>
       <track kind="captions">
     </video>
   </section>
