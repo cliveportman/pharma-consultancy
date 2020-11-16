@@ -109,7 +109,7 @@
     display: flex; justify-content: space-between; flex-direction: column;
     width: 4.4rem; height: 4.4rem;
     padding: 1rem 0.5rem 1rem; margin: 0;
-    background: #ccc; border: none; -webkit-appearance: none;
+    background: none; border: none; -webkit-appearance: none;
     outline: none;
   }
   #menubutton div {
