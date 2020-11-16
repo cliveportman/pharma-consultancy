@@ -348,7 +348,9 @@
   }
 
   .service-detail {
+    display: block; width: 100vw;
     padding-bottom: 4rem;
+    overflow: hidden;
   }
 
 
