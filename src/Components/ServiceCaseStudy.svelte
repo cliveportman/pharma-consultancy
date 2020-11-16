@@ -118,7 +118,7 @@
     .casestudy-toggle button {
       display: block; width: 4.4rem; height: 4.4rem;
       background: #fff;
-      border: 1px solid #383E64; color: #383E64; border-radius: 50%;
+      border: 1px solid #383E64; color: #383E64; border-radius: 2.2rem;
       font-size: 4rem; line-height: 4.4rem; font-weight: 100;
       outline: none;
     }
