@@ -45,7 +45,7 @@ gtag('config', 'UA-26565851-1', {
   <h1>About</h1>
 
   <div class="holder">
-    <img src="/img/cambridge.svg" alt="" class="cambridge">
+    <img src="/img/cambridge.gif" alt="" class="cambridge">
   </div>
 
   <div class="container">
