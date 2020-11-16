@@ -65,7 +65,7 @@
       color: #BD1622;
     }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     nav {
       position: static;
       justify-content: space-between; flex-direction: row;
@@ -132,7 +132,7 @@
   button.open span:last-child {
     display: none;
   }
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     button {
       display: none;
     }
