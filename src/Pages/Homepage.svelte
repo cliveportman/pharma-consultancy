@@ -40,12 +40,12 @@
   });
 
 
-  $: getVideoUrl(width, height);
-  function getVideoUrl(width, height) {
-    if (width < 768) {
-      videoUrl = 'https://s3.eu-west-1.amazonaws.com/cogentia/images/cogentia-portrait.mp4?mtime=20201103110409&focal=none'
-    }
-  }
+  // $: getVideoUrl(width, height);
+  // function getVideoUrl(width, height) {
+  //   if (width < 768) {
+  //     videoUrl = 'https://s3.eu-west-1.amazonaws.com/cogentia/images/cogentia-portrait.mp4?mtime=20201103110409&focal=none'
+  //   }
+  // }
 
   //$: if (videoElement) setTimeout(() => { videoElement.play() }, 1)
 
@@ -93,9 +93,10 @@
           <span class="line2" data-aos="fade-right" data-aos-delay="3000">Integrated</span>
       </div>
     </h1>
-    <video src="{videoUrl ? videoUrl : 'https://s3.eu-west-1.amazonaws.com/cogentia/images/cogentia-landscape.mp4?mtime=20201103110405&focal=none'}" bind:playbackRate="{speed}" bind:paused="{paused}" bind:duration="{duration}" bind:this={videoElement} allow="autoplay" muted  poster="/img/video-placeholder.jpg" playsinline>
+    <video src="https://s3.eu-west-1.amazonaws.com/cogentia/images/cogentia-landscape.mp4?mtime=20201103110405&focal=none" bind:playbackRate="{speed}" bind:paused="{paused}" bind:duration="{duration}" bind:this={videoElement} allow="autoplay" muted   playsinline>
       <track kind="captions">
     </video>
+    <img src="/img/video-placeholder.jpg" alt="">
   </section>
 
   <div class="container">
@@ -122,10 +123,19 @@
     width: 100%; height: 70vh; overflow: hidden;
     margin-bottom: 4rem;
   }
+  .splash img {
+    position: absolute; bottom: 0; top: 0; left: 0; right: 0;
+    display: block; height: 100%;
+    object-fit: cover; object-position: center;
+  }
+
   @media (min-width: 768px) {
     .splash {
       height: 42vh;
     }
+      .splash img {
+        display: none;
+      }
   }
   @media (min-width: 1024px) {
     .splash {
@@ -160,8 +170,13 @@
 
   video {
     position: absolute; bottom: 0; top: 0; left: 0; right: 0;
-    display: block; width: 100%;
+    display: none; width: 100%;
     object-fit: cover; object-position: center;
+  }
+  @media (min-width: 768px) {
+    video {
+      display: block;
+    }
   }
   @media (min-width: 1024px) {
     video {
