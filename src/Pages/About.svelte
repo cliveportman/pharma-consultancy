@@ -25,7 +25,9 @@
   .catch(console.error);
 
   import AOS from 'aos'
+   let pageLoaded = false
   onMount(() => {
+    pageLoaded = true
     AOS.init();
   });
 
@@ -40,7 +42,7 @@ gtag('config', 'UA-26565851-1', {
   <title>About / Cogentia</title>
 </svelte:head>
 
-{#if $pageData}
+{#if $pageData && pageLoaded}
 
   <h1>About</h1>
 
