@@ -74,14 +74,14 @@ gtag('config', 'UA-26565851-1', {
       text-align: center;
     }
     .cambridge {
-      width: 960px;
+      width: 960px; height: 246px;
       margin: 0 auto 4rem;
     }
   }
 
   @media (min-width: 1367px) {
     .cambridge {
-      width: 1160px;
+      width: 1160px; height: 298px;
       margin: 0 auto 4rem;
     }
   }
