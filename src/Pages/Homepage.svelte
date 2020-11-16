@@ -42,7 +42,7 @@
 
   $: getVideoUrl(width, height);
   function getVideoUrl(width, height) {
-    if (width > height) {
+    if (width >= 768) {
       videoUrl = 'https://s3.eu-west-1.amazonaws.com/cogentia/images/cogentia-landscape.mp4?mtime=20201103110405&focal=none'
     } else {
       videoUrl = 'https://s3.eu-west-1.amazonaws.com/cogentia/images/cogentia-portrait.mp4?mtime=20201103110409&focal=none'
@@ -125,7 +125,7 @@
   }
   @media (min-width: 768px) {
     .splash {
-      height: 80vh;
+      height: 42vh;
     }
   }
   @media (min-width: 1024px) {
@@ -136,6 +136,7 @@
 
   h1 {
     position: absolute; left: 0; top: 0; right: 0; bottom: 0; z-index: 2;
+    margin: 0;
     color: white;  text-transform: uppercase; font-size: 8vw; line-height: 1.05em;
     display: flex; justify-content: center; flex-direction: column; align-items: center;
     border: none;
@@ -198,10 +199,14 @@
         grid-template-columns: repeat(3, 1fr);
         column-gap: 2rem;
         margin: 6rem 0;
-      padding: 0 8.3333%
       }
       .textblock {
         margin-bottom: 0;
+      }
+    }
+    @media (min-width: 1024px) {
+      .textblocks {
+        padding: 0 8.3333%
       }
     }
 
