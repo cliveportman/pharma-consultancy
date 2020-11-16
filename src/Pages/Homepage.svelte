@@ -37,7 +37,6 @@
   let pageLoaded = false
   onMount(() => {
     pageLoaded = true
-    AOS.init()
   });
 
 
@@ -52,6 +51,8 @@
 
   $: if (videoElement && duration) playVideo()
   function playVideo() {
+    
+    AOS.init()
 
     function checkTime() {
         if (videoElement.currentTime >= endTime) {
