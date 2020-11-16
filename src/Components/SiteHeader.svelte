@@ -13,11 +13,11 @@
             <a href="/{link.uri != '__home__' ? link.uri : '' }" on:click="{ () => { displayNav = !displayNav }}" class="{link.uri == currentRoute.name.replace('/', '') || (link.uri == '__home__' && currentRoute.name == '/') ? 'current': ''}">{link.linkTitle ? link.linkTitle : link.title}</a>
         {/each}
     </nav>
-    <button class="{ displayNav ? 'open' : ''}" on:click="{ () => { displayNav = !displayNav }}">
+    <a href="#" id="menubutton" class="{ displayNav ? 'open' : ''}" on:click|preventDefault="{ () => { displayNav = !displayNav }}">
       <div></div>
       <div></div>
       <div></div>
-    </button>
+    </a>
 </header>
 
 <style>
@@ -104,7 +104,7 @@
 
   }
 
-  button {
+  #menubutton {
     position: relative;
     display: flex; justify-content: space-between; flex-direction: column;
     width: 4.4rem; height: 4.4rem;
@@ -112,28 +112,28 @@
     background: #ccc; border: none; -webkit-appearance: none;
     outline: none;
   }
-  button div {
+  #menubutton div {
     display: block; width: 100%; height: 0.2rem;
     background: black;
     transition: all 0.2s;
   }
-  button.open div:first-child {
+  #menubutton.open div:first-child {
     position: relative; top: 1.1rem; right: 0.3rem;
     width: 120%;
     transform: rotate(45deg);
     
   }
-  button.open div:nth-child(2) {
+  #menubutton.open div:nth-child(2) {
     position: relative; bottom: 1.1rem; right: 0.3rem;
     width: 120%;
     transform: rotate(-45deg);
     
   }
-  button.open div:last-child {
+  #menubutton.open div:last-child {
     display: none;
   }
   @media (min-width: 1024px) {
-    button {
+    #menubutton {
       display: none;
     }
   }
