@@ -189,7 +189,7 @@
     :global(.service-toggle button) {
       width: 15.4rem; height: 15.4rem;
       margin: 0; padding: 7rem 0 0;
-      border: 1px solid var(--colour1);
+      border: 1px solid var(--colour1); border-radius: 50%;
       transition: all 0.3s;
     }
     :global(.service-toggle.outline button) {
@@ -351,6 +351,12 @@
     display: block; width: 100vw;
     padding-bottom: 4rem;
     overflow: hidden;
+  }
+  @media (min-width: 768px) {
+
+    .service-detail {
+    width: 100%;;
+  }
   }
 
 
