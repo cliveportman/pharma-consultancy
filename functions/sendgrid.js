@@ -7,12 +7,12 @@ function sendEmail(client, message, senderEmail, senderName) {
   return new Promise((fulfill, reject) => {
     const data = {
       from: {
-        email: 'clive@theportman.co',
+        email: 'enquiries@cogentia.co.uk',
         name: 'Cogentia'
       },
       subject: 'Cogentia - contact form submission',
-      to: 'clive@theportman.co',
-      html: `Hey, you\'ve sent an email from Netlify Functions<br/>Message: ${message}`
+      to: 'enquiries@cogentia.co.uk',
+      html: `Message: ${message}`
     }
 
     client
