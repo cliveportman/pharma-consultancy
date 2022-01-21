@@ -50,6 +50,7 @@ gtag('config', 'UA-26565851-1', {
 
     <div class="publications">
       {#each $pageData.entries as publication}
+      {#if publication.pdf[0]}
         <div class="publication" data-aos="fade-up">
           <header>
             <h6>Publication</h6>
@@ -60,6 +61,7 @@ gtag('config', 'UA-26565851-1', {
             <a href="{publication.pdf[0].url}" class="download">Download PDF</a>
           </div>
         </div>
+        {/if}
       {/each}
     </div>
     <TestimonialsCarousel/>
