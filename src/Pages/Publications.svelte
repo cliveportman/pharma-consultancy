@@ -1,5 +1,5 @@
 <script>
-  import { url, options, publicationsData as pageData } from '../stores/global-store'
+  import { url, options, publicationsData as pageData, publicationsData } from '../stores/global-store'
   import {query } from '../stores/graphql-queries/publications-query'
   import LoadingIcon from '../Components/LoadingIcon.svelte'
   import TestimonialsCarousel from '../Components/TestimonialsCarousel.svelte'
@@ -9,18 +9,92 @@
   let queryUrl
   if (token) queryUrl = url + '?token=' + token
   else queryUrl = url
-
+  
+  let publications = [], activePublications = []
   fetch(queryUrl, options(query))
   .then( (resp) => resp.json() )
   .then(function(json) {
-    console.log(json.data)
 
     pageData.update(() => {
+      publications = json.data.publications
+      activePublications = publications
+      prepFilter()
       return json.data
     });
 
    })
   .catch(console.error);
+
+  let filterdata = {}, publicationTypes = [], projectTypes = []
+  const prepFilter = () => {
+    publications.forEach(publication => {
+      publication.publicationType.forEach(type => {
+        if (!publicationTypes.includes((type.title))) publicationTypes.push(type.title)
+      })
+      publication.projectType.forEach(type => {
+        if (!projectTypes.includes((type.title))) projectTypes.push(type.title)
+      })      
+    })
+    console.log('Pub types', publicationTypes)
+    console.log('Proj types', projectTypes)
+  }
+
+
+  let activeFilters = [] 
+  console.log('filter', activeFilters)
+  console.log('to show', activePublications)
+  const filterClick = (type) => {
+
+    // If the type is already in the filter remove it and return
+    if (activeFilters.indexOf(type) !== -1) {
+      activeFilters.splice(activeFilters.indexOf(type), 1)
+      console.log('filterTerms', activeFilters)
+      console.log('to show', activePublications)
+      filter()
+      return
+    }
+
+    // The type is not in the filter, so add it
+    activeFilters.push(type)
+    if (publicationTypes.includes(type)) {
+      //console.log('Pub type: ', type)
+    }
+    if (projectTypes.includes(type)) {
+      //console.log('Proj type: ', type)
+    }
+    filter()
+  }
+
+  const filter = () => {
+
+    // Reset the active publications
+    activePublications = []
+
+    // If the filter is empty, display them all
+    if (activeFilters.length == 0) {
+      activePublications = publications
+      return
+    }
+
+    // The filter is not empty, so filter for publications of the right publication type
+    publications.forEach(publication => {
+      publication.publicationType.forEach(type => {
+        if (activeFilters.includes((type.title))) {
+          activePublications.push(publication)
+        }
+      })
+    })
+    // Then filter for publications of the right project type, but avoid duplicating those added already
+    publications.forEach(publication => {
+      publication.projectType.forEach(type => {
+        if (activePublications.indexOf(publication) == -1 && activeFilters.includes((type.title))) {
+          activePublications.push(publication)
+        }
+      })
+    })
+    console.log('filter', activeFilters)
+    console.log('to show', activePublications)
+  }
 
 import { onMount } from 'svelte'
 import AOS from 'aos'
@@ -48,7 +122,19 @@ gtag('config', 'UA-26565851-1', {
       <h1 class="show">Publications</h1>
     </div>
 
+    <div class ="filter">
+      {#each publicationTypes as type}
+        <button type="button" on:click="{ () => { filterClick(type) }}">{type}</button>
+      {/each}
+      <div class="advancedfilter">
+        {#each projectTypes as type}
+          <button type="button" on:click="{ () => { filterClick(type) }}">{type}</button>
+        {/each}
+      </div>
+    </div>
+
     <div class="publications">
+      {#each $pageData.publications as publication}
       {#each $pageData.entries as publication}
       {#if publication.pdf[0]}
         <div class="publication" data-aos="fade-up">
@@ -58,7 +144,7 @@ gtag('config', 'UA-26565851-1', {
           </header>
           <div class="summary">
             {@html publication.summary}
-            <a href="{publication.pdf[0].url}" class="download">Download PDF</a>
+            {#if publicationsData.pdf}<a href="{publication.pdf[0].url}" class="download">Download PDF</a>{/if}
           </div>
         </div>
         {/if}
