@@ -8,7 +8,7 @@ query getPublications {
       ogImage
   	} 
   }
-  entries(section:"publications") {
+  publications: entries(section:"publications") {
     slug
     ...on publications_publication_Entry {
       service {
@@ -20,6 +20,14 @@ query getPublications {
         ...on downloads_Asset {
           url
         }
+      }
+      projectType {
+        slug
+        title
+      }
+      publicationType {
+        slug
+        title
       }
     }
   }

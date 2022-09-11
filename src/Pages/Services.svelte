@@ -23,8 +23,6 @@
   .then( (resp) => resp.json() )
   .then(function(json) {
 
-    console.log(json.data)
-
     pageData.update(() => {
       return json.data
     });
