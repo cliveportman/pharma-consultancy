@@ -55,7 +55,7 @@
     AOS.init()
 
     function checkTime() {
-        if (videoElement.currentTime >= endTime) {
+        if (videoElement?.currentTime >= endTime) {
           videoElement.pause();
         } else {
           /* call checkTime every 1/10th 
