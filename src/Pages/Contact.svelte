@@ -51,7 +51,7 @@ import AOS from 'aos'
 	let container;
 	let map;
 	let zoom = 14;
-  let center = {lat: 52.201780, lng: 0.124703} 
+  let center = {lat: 52.19470911742519, lng: 0.13417319979807268} 
     
     
 	onMount(async () => {
@@ -62,7 +62,7 @@ import AOS from 'aos'
     });
     let image = '/img/map-icon.png';
         var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(52.201780, 0.124703),
+            position: new google.maps.LatLng(52.19470911742519, 0.13417319979807268),
             map: map,
             title: "Cogentia",
       icon: image

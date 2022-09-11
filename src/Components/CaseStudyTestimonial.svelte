@@ -39,7 +39,7 @@
   }
   .arrow p {
     display: block;
-    margin-bottom: 0;
+    margin-bottom: 0; padding-left: 2rem;
     line-height: 1em; color: white; font-size: 1.6rem;
   }
   .arrow:after {
