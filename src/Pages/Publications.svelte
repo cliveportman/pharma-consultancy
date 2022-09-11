@@ -17,6 +17,15 @@
 
     pageData.update(() => {
       publications = json.data.publications
+      publications.forEach(publication => {
+        publication.categories = []
+        publication.publicationType.forEach(type => {
+          publication.categories.push(type.title)
+        })
+        publication.projectType.forEach(type => {
+          publication.categories.push(type.title)
+        })      
+      })
       activePublications = publications
       prepFilter()
       return json.data
@@ -35,19 +44,17 @@
         if (!projectTypes.includes((type.title))) projectTypes.push(type.title)
       })      
     })
-    console.log('Pub types', publicationTypes)
-    console.log('Proj types', projectTypes)
   }
 
 
   let activeFilters = [] 
   console.log('filter', activeFilters)
   console.log('to show', activePublications)
-  const filterClick = (type) => {
+  const filterClick = (category) => {
 
-    // If the type is already in the filter remove it and return
-    if (activeFilters.indexOf(type) !== -1) {
-      activeFilters.splice(activeFilters.indexOf(type), 1)
+    // If the category is already in the filter remove it and return
+    if (activeFilters.indexOf(category) !== -1) {
+      activeFilters.splice(activeFilters.indexOf(category), 1)
       console.log('filterTerms', activeFilters)
       console.log('to show', activePublications)
       filter()
@@ -55,13 +62,7 @@
     }
 
     // The type is not in the filter, so add it
-    activeFilters.push(type)
-    if (publicationTypes.includes(type)) {
-      //console.log('Pub type: ', type)
-    }
-    if (projectTypes.includes(type)) {
-      //console.log('Proj type: ', type)
-    }
+    activeFilters.push(category)
     filter()
   }
 
@@ -78,16 +79,8 @@
 
     // The filter is not empty, so filter for publications of the right publication type
     publications.forEach(publication => {
-      publication.publicationType.forEach(type => {
-        if (activeFilters.includes((type.title))) {
-          activePublications.push(publication)
-        }
-      })
-    })
-    // Then filter for publications of the right project type, but avoid duplicating those added already
-    publications.forEach(publication => {
-      publication.projectType.forEach(type => {
-        if (activePublications.indexOf(publication) == -1 && activeFilters.includes((type.title))) {
+      publication.categories.forEach(category => {
+        if (activePublications.indexOf(publication) == -1 && activeFilters.includes((category))) {
           activePublications.push(publication)
         }
       })
@@ -122,7 +115,7 @@ gtag('config', 'UA-26565851-1', {
       <h1 class="show">Publications</h1>
     </div>
 
-    <div class ="filter">
+    <!-- <div class ="filter">
       {#each publicationTypes as type}
         <button type="button" on:click="{ () => { filterClick(type) }}">{type}</button>
       {/each}
@@ -131,18 +124,20 @@ gtag('config', 'UA-26565851-1', {
           <button type="button" on:click="{ () => { filterClick(type) }}">{type}</button>
         {/each}
       </div>
-    </div>
+    </div> -->
 
     <div class="publications">
       {#each $pageData.publications as publication}
-        <div class="publication" data-aos="fade-up">
+        <div 
+          class="article" data-aos="fade-up"
+        >
           <header>
             <h6>Publication</h6>
             <h3>{publication.title}</h3>
           </header>
           <div class="summary">
             {@html publication.summary}
-            {#if publication.pdf}<a href="{publication.pdf[0].url}" class="download">Download PDF</a>{/if}
+            {#if publication.pdf.length}<a href="{publication.pdf[0].url}" class="download">Download PDF</a>{/if}
           </div>
         </div>
       {/each}
@@ -171,7 +166,7 @@ gtag('config', 'UA-26565851-1', {
   width: 83.3333%;
 }
 }
-  .publication{
+  .article{
     margin-bottom: 2rem;
   }
   header {
@@ -189,7 +184,7 @@ gtag('config', 'UA-26565851-1', {
       font-size: 1.6rem;
       color: #1D1D1D;
     }
-    .publication .summary{
+    .article .summary{
       padding: 2rem 2rem;
       background: linear-gradient(#F3F2ED, #ffffff);      
     }
