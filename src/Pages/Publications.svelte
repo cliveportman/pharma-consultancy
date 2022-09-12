@@ -115,7 +115,7 @@ gtag('config', 'UA-26565851-1', {
       <h1 class="show">Publications</h1>
     </div>
 
-    <!-- <div class ="filter">
+    <div class ="filter">
       {#each publicationTypes as type}
         <button type="button" on:click="{ () => { filterClick(type) }}">{type}</button>
       {/each}
@@ -124,15 +124,24 @@ gtag('config', 'UA-26565851-1', {
           <button type="button" on:click="{ () => { filterClick(type) }}">{type}</button>
         {/each}
       </div>
-    </div> -->
+    </div>
 
     <div class="publications">
       {#each $pageData.publications as publication}
         <div 
-          class="article" data-aos="fade-up"
+          class="article" data-aos="fade-up" 
+          class:publication="{publication.categories.length && publication.categories.includes('Publication')}"
+          class:other="{publication.categories.length && publication.categories.includes('Other')}"
+          class:whitepaper="{publication.categories.length && publication.categories.includes('White paper')}"
+          class:casestudy="{publication.categories.length && publication.categories.includes('Case studies')}"
         >
           <header>
-            <h6>Publication</h6>
+            <h6>
+              {#if publication.categories.length && publication.categories.includes('White paper')}White paper
+              {:else if publication.categories.length && publication.categories.includes('Case studies')}Case study
+              {:else if publication.categories.length && publication.categories.includes('Other')}Other
+              {:else}Publication{/if}
+            </h6>
             <h3>{publication.title}</h3>
           </header>
           <div class="summary">
