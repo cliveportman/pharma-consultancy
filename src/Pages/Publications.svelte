@@ -1,12 +1,13 @@
 <script>
-  import { url, options, publicationsData as pageData, publicationsData } from '../stores/global-store'
+  import { url, options, publicationsData as pageData, publicationsData, activeFilters } from '../stores/global-store'
+  import { fade, slide } from 'svelte/transition'
   import {query } from '../stores/graphql-queries/publications-query'
   import LoadingIcon from '../Components/LoadingIcon.svelte'
   import TestimonialsCarousel from '../Components/TestimonialsCarousel.svelte'
 
   export let currentRoute  
   let token = currentRoute.queryParams.token
-  let queryUrl
+  let queryUrl, open = true
   if (token) queryUrl = url + '?token=' + token
   else queryUrl = url
   
@@ -47,22 +48,25 @@
   }
 
 
-  let activeFilters = [] 
-  console.log('filter', activeFilters)
-  console.log('to show', activePublications)
+  $activeFilters = []
   const filterClick = (category) => {
 
+    // We need to assign otherwise it's not reactive
+    let tempFilters = $activeFilters
+
     // If the category is already in the filter remove it and return
-    if (activeFilters.indexOf(category) !== -1) {
-      activeFilters.splice(activeFilters.indexOf(category), 1)
-      console.log('filterTerms', activeFilters)
-      console.log('to show', activePublications)
+    if ($activeFilters.indexOf(category) !== -1) {
+      tempFilters.splice($activeFilters.indexOf(category), 1)
+      // We need to assign otherwise it's not reactive
+      $activeFilters = tempFilters
       filter()
       return
     }
 
     // The type is not in the filter, so add it
-    activeFilters.push(category)
+    tempFilters.push(category)
+    // We need to assign otherwise it's not reactive
+    $activeFilters = tempFilters
     filter()
   }
 
@@ -72,21 +76,23 @@
     activePublications = []
 
     // If the filter is empty, display them all
-    if (activeFilters.length == 0) {
+    if ($activeFilters.length == 0) {
       activePublications = publications
-      return
     }
+    if ($activeFilters.length > 0) {
+      // The filter is not empty, so filter for publications of the right publication type
+      publications.forEach(publication => {
+        publication.categories.forEach(category => {
 
-    // The filter is not empty, so filter for publications of the right publication type
-    publications.forEach(publication => {
-      publication.categories.forEach(category => {
-        if (activePublications.indexOf(publication) == -1 && activeFilters.includes((category))) {
-          activePublications.push(publication)
-        }
+          // Loop through the activefilter
+
+            // If the filter category returns false, return false
+          if (activePublications.indexOf(publication) == -1 && $activeFilters.includes((category))) {
+            activePublications.push(publication)
+          }
+        })
       })
-    })
-    console.log('filter', activeFilters)
-    console.log('to show', activePublications)
+    }
   }
 
 import { onMount } from 'svelte'
@@ -115,34 +121,113 @@ gtag('config', 'UA-26565851-1', {
       <h1 class="show">Publications</h1>
     </div>
 
-    <div class ="filter">
-      {#each publicationTypes as type}
-        <button type="button" on:click="{ () => { filterClick(type) }}">{type}</button>
-      {/each}
-      <div class="advancedfilter">
-        {#each projectTypes as type}
-          <button type="button" on:click="{ () => { filterClick(type) }}">{type}</button>
-        {/each}
+    <div class="filter">
+
+      <div class="filter-header">
+        <h3>Publication type</h3>
+        <button type="button" class="openfilter" class:filtered="{open && $activeFilters.length}" on:click="{ () => { open = !open} }">
+          {#if open && $activeFilters.length}
+            View {activePublications.length} results
+          {/if}
+          {#if open && !$activeFilters.length}
+            View all {publications.length} results
+          {/if}
+          {#if !open}
+            <span>Advanced</span> Filter
+          {/if}
+        </button>
       </div>
+
+      <div class="large publicationsfilter">
+        <div class="buttonholder">
+          {#each publicationTypes as type}
+            <button type="button" class="category" class:selected="{$activeFilters.includes(type)}" on:click="{ () => { filterClick(type) }}">
+              <div>
+                <span class="outerbox"><span class="innerbox"></span></span>
+                <span class="label">{type}</span>
+              </div>            
+            </button>
+          {/each}
+        </div>
+      </div>
+
+      {#if open}
+      <div class="large projectsfilter" transition:slide>
+        <h3>Project type</h3>
+        <div class="buttonholder">
+          {#each projectTypes as type}
+            <button type="button" class="category" class:selected="{$activeFilters.includes(type)}" on:click="{ () => { filterClick(type) }}">
+              <div>
+                <span class="outerbox"><span class="innerbox"></span></span>
+                <span class="label">{type}</span>
+              </div>            
+            </button>
+          {/each}
+        </div>
+      </div>
+      {/if}
+
+      {#if open}
+        <div class="smallfilter" transition:slide>
+          <h3>Publication type</h3>
+          {#each publicationTypes as type}
+            <button type="button" class="category" class:selected="{$activeFilters.includes(type)}" on:click="{ () => { filterClick(type) }}">
+              <div>
+                <span class="outerbox"><span class="innerbox"></span></span>
+                <span class="label">{type}</span>
+              </div>            
+            </button>
+          {/each}
+          <hr>
+          <h3>Project type</h3>
+          {#each projectTypes as type}            
+            <button type="button" class="category" class:selected="{$activeFilters.includes(type)}" on:click="{ () => { filterClick(type) }}">
+              <div>
+                <span class="outerbox"><span class="innerbox"></span></span>
+                <span class="label">{type}</span>
+              </div>            
+            </button>
+          {/each}
+        </div>
+      {/if}
+
     </div>
 
     <div class="publications">
-      {#each $pageData.publications as publication}
+      {#each activePublications as publication}
         <div 
-          class="article" data-aos="fade-up" 
+          class="article" transition:fade
           class:publication="{publication.categories.length && publication.categories.includes('Publication')}"
           class:other="{publication.categories.length && publication.categories.includes('Other')}"
           class:whitepaper="{publication.categories.length && publication.categories.includes('White paper')}"
           class:casestudy="{publication.categories.length && publication.categories.includes('Case studies')}"
         >
           <header>
-            <h6>
+            <!-- <h6>
               {#if publication.categories.length && publication.categories.includes('White paper')}White paper
               {:else if publication.categories.length && publication.categories.includes('Case studies')}Case study
               {:else if publication.categories.length && publication.categories.includes('Other')}Other
               {:else}Publication{/if}
-            </h6>
+            </h6> -->
             <h3>{publication.title}</h3>
+            <h6>
+              {#if publication.publicationType?.length}
+                <div>
+                  <strong>Publication type: </strong>
+                  {#each publication.publicationType as item, index}
+                    {item.title}{index + 1 != publication.publicationType.length ? ', ' : ''}
+                  {/each}
+                </div>
+              {/if}
+              {#if publication.projectType?.length}
+                <div>
+                  <strong>Project type: </strong>
+                  {#each publication.projectType as item, index}
+                    {item.title}{index + 1 != publication.projectType.length ? ', ' : ''}
+                  {/each}
+                </div>
+              {/if}
+            </h6>
           </header>
           <div class="summary">
             {@html publication.summary}
@@ -169,27 +254,184 @@ gtag('config', 'UA-26565851-1', {
     column-gap: 2rem;
   }
   }
-@media (min-width: 1024px) {
-  
-.publications {
-  width: 83.3333%;
-}
-}
+  @media (min-width: 1024px) {    
+    .publications {
+      width: 83.3333%;
+    }
+  }
   .article{
     margin-bottom: 2rem;
   }
+
   header {
     padding: 1.5rem 2rem;
     background: #E0EAED;
   }
+  @media (min-width: 1024px) {
+    .header {
+      padding-left: 8.3333%; padding-right: 8.3333%;
+    }
+  }
+  
+  .filter {
+    padding: 1.5rem 2rem;
+    /*ackground: #F3F2ED; */
+    background: white;
+
+  }
+  @media (min-width: 768px) {
+    .filter {
+      padding: 1.5rem 2rem;
+      background: linear-gradient(#F3F2ED, #ffffff);
+    }
+  }
+  @media (min-width: 1024px) {
+    .filter {
+      margin-left: 8.3333%; margin-right: 8.3333%;
+    }
+  }
+
+  .filter-header {
+  }
+  @media (min-width: 768px) {
+    .filter-header {
+      display: flex; justify-content: space-between; align-items: flex-start;
+    }
+  }
+
+  .filter h3 {    
+    text-transform: uppercase; color: #BD1622; font-size: 1.6rem;
+  }
+    .filter-header h3 {
+      display: none;
+    }
+    @media (min-width: 768px) {
+      .filter-header h3 {
+        display: block;
+      }
+    }
+
+    .filter-header button.openfilter {
+      display: block;
+      border: 0.1rem solid #BD1622; border-radius: 0.5rem;
+      padding: 0.5rem 6rem; margin: 0 auto 0;
+      background: white;
+      font-size: 1.4rem; line-height: 1em; color: #BD1622; text-transform: uppercase;
+    }
+    .filter-header button.openfilter.filtered {
+      background: #BD1622; color: white;
+    }
+    @media (min-width: 768px) {
+      .filter-header button.openfilter {
+        padding: 0.5rem 3rem; margin: 0;
+      }
+    }
+
+
+    .filter-header button.openfilter span {
+      display: none;
+    }
+    @media (min-width: 768px) {
+      .filter-header button.openfilter span {
+        display: inline;
+      }
+    }
+
+
+
+    .large.publicationsfilter {
+      display: none;
+    }
+    @media (min-width: 768px) {
+      .large.publicationsfilter {
+        display: block;
+      }
+      .large.publicationsfilter .buttonholder {
+        display: flex;
+      }
+    }
+    .large.projectsfilter {
+      display: none;
+    }
+    @media (min-width: 768px) {
+      .large.projectsfilter {
+        display: block;
+        padding: 1.5rem 0 0; margin: 1.5rem 0 0;
+        border-top: 0.1rem solid #595958;
+      }
+      .large.projectsfilter .buttonholder {
+        display: grid; grid-template-columns: 50% 50%;
+      }
+    }
+    .smallfilter {
+      display: block;
+      margin: 0 -4rem; padding: 1.5rem 2rem;
+      background: linear-gradient(#F3F2ED, #ffffff);
+      border-top: 1.5rem solid white;
+    }
+    @media (min-width: 768px) {
+      .smallfilter {
+        display: none;
+      }
+    }
+
+
+
+
+    button.category {
+      display: block;
+      background: none; border: none;
+      margin: 0 0 0.5rem;
+    }
+
+    button.category div {
+      display: flex; justify-content: flex-start; align-items: center;
+    }
+
+    button.category .outerbox {
+      display: block; width: 1.5rem; height: 1.5rem;
+      margin-right: 1rem;
+      border: 0.1rem solid #595958;
+    }
+
+    button.category .innerbox {
+      display: block; width: 1.3rem; height: 1.3rem;
+      border: 0.1rem solid white;
+      background: #F3F2ED;
+    }
+    button.category.selected .innerbox {
+      background: #BD1622;
+    }
+
+    button.category .label {
+      display: block;
+      font-size: 1rem; line-height: 1.2em; text-transform: uppercase; color: #595958; text-align: left;
+    }
+
+
+    hr {
+      margin: 1rem 0.5rem 2rem;
+    }
+
+
+
+
+
+
+
+
+
     h6 {
       display: block;
       margin: 0 0 0.5rem;
-      font-size: 1.2rem; line-height: 1.2em;;
+      font-size: 1.2rem; line-height: 1.5em;;
       text-transform: uppercase; color: #595958;
     }
-    h3 {
-      margin: 0;
+    h6 strong {
+      font-weight: 700;
+    }
+    .article h3 {
+      margin: 0 0 1rem;
       font-size: 1.6rem;
       color: #1D1D1D;
     }

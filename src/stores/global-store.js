@@ -20,4 +20,5 @@ export const teamData = writable();
 export const careersData = writable();
 export const contactData = writable();
 export const pagesData = writable();
+export const activeFilters = writable();
 
