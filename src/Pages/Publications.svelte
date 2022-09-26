@@ -82,15 +82,18 @@
     if ($activeFilters.length > 0) {
       // The filter is not empty, so filter for publications of the right publication type
       publications.forEach(publication => {
-        publication.categories.forEach(category => {
 
-          // Loop through the activefilter
+        // Check the publication isn't already selected
+        if (activePublications.indexOf(publication) == -1) { 
+          // Go through the activefilters. If they are included within the publication's categories,
+          // then add the count to the satisfied filters. If all filters are satisfied, bingo.         
+          let satisfiedFiltersCount = 0
+          $activeFilters.forEach(filter => {
+            if (publication.categories.includes(filter)) satisfiedFiltersCount++
+          })
+          if (satisfiedFiltersCount == $activeFilters.length) activePublications.push(publication)
+        }
 
-            // If the filter category returns false, return false
-          if (activePublications.indexOf(publication) == -1 && $activeFilters.includes((category))) {
-            activePublications.push(publication)
-          }
-        })
       })
     }
   }
@@ -349,6 +352,9 @@ gtag('config', 'UA-26565851-1', {
       .large.publicationsfilter .buttonholder {
         display: flex;
       }
+      .large.publicationsfilter  button.category {
+        margin-right: 2rem;
+      }
     }
     .large.projectsfilter {
       display: none;
@@ -390,7 +396,7 @@ gtag('config', 'UA-26565851-1', {
 
     button.category .outerbox {
       display: block; width: 1.5rem; height: 1.5rem;
-      margin-right: 1rem;
+      margin-right: 0.75rem;
       border: 0.1rem solid #595958;
     }
 
@@ -406,6 +412,12 @@ gtag('config', 'UA-26565851-1', {
     button.category .label {
       display: block;
       font-size: 1rem; line-height: 1.2em; text-transform: uppercase; color: #595958; text-align: left;
+    }
+
+    @media (min-width: 1366px) {
+      button.category .label {
+        font-size: 1.2rem;
+      }
     }
 
 
