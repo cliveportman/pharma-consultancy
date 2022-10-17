@@ -53,7 +53,7 @@ gtag('config', 'UA-26565851-1', {
         <h2 data-aos="fade-up">{ category.title}</h2>
         <div class="people">
           {#each $pageData.entries as person}
-          {#if person.team[0].slug == category.slug}
+          {#if person.team[0]?.slug == category.slug}
             <div class="person" data-aos="fade-up">
               <header>
                 <img src="{person.portrait[0].url}" alt="{person.title}">
