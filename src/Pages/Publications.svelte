@@ -112,7 +112,7 @@ gtag('config', 'UA-26565851-1', {
 </script>
 
 <svelte:head>
-  <title>Publications / Cogentia</title>
+  <title>Our work / Cogentia</title>
 </svelte:head>
 
 
@@ -121,7 +121,7 @@ gtag('config', 'UA-26565851-1', {
   <div class="container">
 
     <div class="header">
-      <h1 class="show">Publications</h1>
+      <h1 class="show">Our work</h1>
     </div>
 
     <div class="filter">
@@ -202,7 +202,7 @@ gtag('config', 'UA-26565851-1', {
           class="article" transition:fade
           class:publication="{publication.categories.length && publication.categories.includes('Publication')}"
           class:other="{publication.categories.length && publication.categories.includes('Other')}"
-          class:whitepaper="{publication.categories.length && publication.categories.includes('White paper')}"
+          class:whitepaper="{publication.categories.length && publication.categories.includes('Articles')}"
           class:casestudy="{publication.categories.length && publication.categories.includes('Case studies')}"
         >
           <header>
