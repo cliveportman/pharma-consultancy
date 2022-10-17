@@ -33,6 +33,9 @@ gtag('config', 'UA-26565851-1', {
   'page_path': currentRoute.path
 });
 
+import Modal from '../Components/PersonModal.svelte'
+let personToShowInModal = null
+
 </script>
 
 <svelte:head>
@@ -47,66 +50,39 @@ gtag('config', 'UA-26565851-1', {
     <div class="introduction" data-aos="fade-up">
       {@html $pageData.entry.introduction}
     </div>
-
-    <!-- 
-    Originally designed to use categories of team members but all the new ones are empty
-      {#each $pageData.categories as category}
-      <div class="category">
-        <h2 data-aos="fade-up">{ category.title}</h2>
-        <div class="people">
-          {#each $pageData.entries as person}
-          {#if person.team[0].slug == category.slug}
-            <div class="person" data-aos="fade-up">
-              <header>
-                <img src="{person.portrait[0].url}" alt="{person.title}">
-                <div class="titles">
-                  <h3>
-                    <span class="caps">{person.firstName}</span> {person.lastName}
-                  </h3>
-                  <p>{person.title1}</p>
-                  <p>{person.title2}</p>
-                </div>
-              </header>
-              <div class="text">
-                {@html person.bio}
+    <div class="category">
+      <div class="people">
+        {#each $pageData.entries as person}
+          <div class="person" data-aos="fade-up">
+            <header>
+              <img src="{person.portrait[0].url}" alt="{person.title}">
+              <div class="titles">
+                <h3>
+                  <span class="caps">{person.firstName}</span> {person.lastName}
+                </h3>
+                {#if person.title1}<p>{person.title1}</p>{/if}
+                {#if person.title2}<p>{person.title2}</p>{/if}
               </div>
+            </header>
+            <div class="text">
+              {@html person.bio}
             </div>
-          {/if}
-          {/each}
-        </div>
-      </div>
-    {/each} -->
-      <div class="category">
-        <div class="people">
-          {#each $pageData.entries as person}
-            <div class="person" data-aos="fade-up">
-              <header>
-                <img src="{person.portrait[0].url}" alt="{person.title}">
-                <div class="titles">
-                  <h3>
-                    <span class="caps">{person.firstName}</span> {person.lastName}
-                  </h3>
-                  {#if person.title1}<p>{person.title1}</p>{/if}
-                  {#if person.title2}<p>{person.title2}</p>{/if}
-                </div>
-              </header>
-              <div class="text">
-                {@html person.bio}
-              </div>
-              <div class="footer">
-                <button type="button">
-                  <div>Read more <img src="/img/icons/show.svg" alt="" /></div>
-                </button>
-              </div>
+            <div class="footer">
+              <button type="button" on:click="{ () => personToShowInModal = person }">
+                <div>Read more <img src="/img/icons/show.svg" alt="" /></div>
+              </button>
             </div>
-          {/each}
-        </div>
+          </div>
+        {/each}
       </div>
+    </div>
 
   </div>
 {:else}
   <LoadingIcon/> 
 {/if}
+
+{#if personToShowInModal}<Modal bind:personToShowInModal="{personToShowInModal}" />{/if}
 
 <style>
   .introduction {
@@ -129,17 +105,7 @@ gtag('config', 'UA-26565851-1', {
       margin: 0 auto 6rem;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      column-gap: 4rem; row-gap: 6rem;
-    }
-
-    .person:nth-child(2n-1) {
-      margin-right: 4rem;
-
-    }
-
-    .person:nth-child(2n) {
-      padding-left: 4rem;
-
+      column-gap: 6rem; row-gap: 6rem;
     }
   }
 
@@ -220,17 +186,22 @@ gtag('config', 'UA-26565851-1', {
 
 .footer {
   display: flex; justify-content: flex-end;
-  padding-bottom: 3rem;;
-  border-bottom: 1px solid #ccc;
+  padding-bottom: 3rem; margin-bottom: 4rem;
+}
+@media (max-width: 767px) {
+.person:last-of-type .footer {
+  margin-bottom: 0; border-bottom: 0;
+}
 }
 .footer button {
   display: block;
   border: none; background: none;
   font-weight: 400; text-transform: uppercase; font-size: 1.2rem;
   color: #BD1622;
+  padding: 0;
 }
 
-.footer div {
+.footer button div {
   display: flex; justify-content: flex-end; align-items: center;
 }
   .footer button img {
