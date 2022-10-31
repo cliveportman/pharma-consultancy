@@ -16,6 +16,8 @@ query getTeam {
       title1
       title2
       bio
+      email
+      linkedinUrl
       portrait {
         ...on images_Asset {
           url

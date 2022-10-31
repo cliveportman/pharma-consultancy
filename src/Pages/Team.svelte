@@ -33,6 +33,9 @@ gtag('config', 'UA-26565851-1', {
   'page_path': currentRoute.path
 });
 
+import Modal from '../Components/PersonModal.svelte'
+let personToShowInModal = null
+
 </script>
 
 <svelte:head>
@@ -48,37 +51,39 @@ gtag('config', 'UA-26565851-1', {
       {@html $pageData.entry.introduction}
     </div>
 
-    {#each $pageData.categories as category}
-      <div class="category">
-        <h2 data-aos="fade-up">{ category.title}</h2>
-        <div class="people">
-          {#each $pageData.entries as person}
-          {#if person.team[0]?.slug == category.slug}
-            <div class="person" data-aos="fade-up">
-              <header>
-                <img src="{person.portrait[0].url}" alt="{person.title}">
-                <div class="titles">
-                  <h3>
-                    <span class="caps">{person.firstName}</span> {person.lastName}
-                  </h3>
-                  <p>{person.title1}</p>
-                  <p>{person.title2}</p>
-                </div>
-              </header>
-              <div class="text">
-                {@html person.bio}
+    <div class="category">
+      <div class="people">
+        {#each $pageData.entries as person}
+          <div class="person" data-aos="fade-up">
+            <header>
+              <img src="{person.portrait[0].url}" alt="{person.title}">
+              <div class="titles">
+                <h3>
+                  <span class="caps">{person.firstName}</span> {person.lastName}
+                </h3>
+                {#if person.title1}<p>{person.title1}</p>{/if}
+                {#if person.title2}<p>{person.title2}</p>{/if}
               </div>
+            </header>
+            <div class="text">
+              {@html person.bio}
             </div>
-          {/if}
-          {/each}
-        </div>
+            <div class="footer">
+              <button type="button" on:click="{ () => personToShowInModal = person }">
+                <div>Read more <img src="/img/icons/show.svg" alt="" /></div>
+              </button>
+            </div>
+          </div>
+        {/each}
       </div>
-    {/each}
+    </div>
 
   </div>
 {:else}
   <LoadingIcon/> 
 {/if}
+
+{#if personToShowInModal}<Modal bind:personToShowInModal="{personToShowInModal}" />{/if}
 
 <style>
   .introduction {
@@ -101,18 +106,7 @@ gtag('config', 'UA-26565851-1', {
       margin: 0 auto 6rem;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      column-gap: 0;
-    }
-
-    .person:nth-child(2n-1) {
-      margin-right: 4rem;
-
-    }
-
-    .person:nth-child(2n) {
-      padding-left: 4rem;
-      border-left: 1px solid #ccc;
-
+      column-gap: 6rem; row-gap: 6rem;
     }
   }
 
@@ -178,4 +172,42 @@ gtag('config', 'UA-26565851-1', {
   font-weight: 700;
     color: #BD1622;
 }
+
+.text {
+  max-height: 300px; overflow: hidden;
+  position: relative;
+
+}
+  .text:after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 60%;
+    background: linear-gradient(0deg, white 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0) 100%);
+  }
+
+.footer {
+  display: flex; justify-content: flex-end;
+  padding-bottom: 3rem; margin-bottom: 4rem;
+}
+@media (max-width: 767px) {
+.person:last-of-type .footer {
+  margin-bottom: 0; border-bottom: 0;
+}
+}
+.footer button {
+  display: block;
+  border: none; background: none;
+  font-weight: 400; text-transform: uppercase; font-size: 1.2rem;
+  color: #BD1622;
+  padding: 0;
+}
+
+.footer button div {
+  display: flex; justify-content: flex-end; align-items: center;
+}
+  .footer button img {
+    display: block; width: 4.5rem; height: 4.5rem;
+    border: none;
+    margin: 0 0 0 1rem;
+  }
 </style>
