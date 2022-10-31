@@ -50,6 +50,7 @@ let personToShowInModal = null
     <div class="introduction" data-aos="fade-up">
       {@html $pageData.entry.introduction}
     </div>
+
     <div class="category">
       <div class="people">
         {#each $pageData.entries as person}
