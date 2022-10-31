@@ -130,19 +130,25 @@
 }
 
 .text {
-  max-height: 40rem;
+  max-height: calc(100vh - 35rem);
   overflow: auto;
 }
 
 
 .footer {
-  display: flex; justify-content: flex-start; align-items: flex-end;
-  padding-bottom: 4rem;
-  border-bottom: 1px solid #ccc;
+  padding-top: 1rem; padding-bottom: 1rem;
+  border-bottom: 1px solid #ccc; border-top: 1px solid #ccc;
 }
+@media (min-width: 768px) {
+  .footer {
+    padding-bottom: 4rem; 
+    display: flex; justify-content: flex-start; align-items: flex-end;
+  }
+}
+
   .footer .email {
     display: flex; justify-content: flex-start; align-items: flex-end;
-    margin-right: 4rem;
+    margin-right: 4rem; margin-bottom: 1rem;
     color: #1D1D1D; font-size: 1.6rem; text-decoration: none;
   }
     .footer .email img {
