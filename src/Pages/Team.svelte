@@ -47,7 +47,7 @@ let personToShowInModal = null
   <h1>Team</h1>
   <div class="container">
 
-    <div class="introduction" data-aos="fade-up">
+    <div class="copy" data-aos="fade-up">
       {@html $pageData.entry.introduction}
     </div>
 
@@ -86,18 +86,14 @@ let personToShowInModal = null
 {#if personToShowInModal}<Modal bind:personToShowInModal="{personToShowInModal}" />{/if}
 
 <style>
-  .introduction {
+  .copy {
     margin: 4rem 0;
   }
+
   @media (min-width: 768px) {
-    .introduction {
-      margin: 6rem 0;
-      padding-left: 8.3333%; padding-right: 8.3333%;
-    }
-  }
-  @media (min-width: 1024px) {
-    .introduction {
-      padding-left: 0; padding-right: 50%;
+    .copy {
+      margin: 6rem auto;
+      width: 66.6666%; margin: 0 auto 6rem;
     }
   }
 
@@ -126,7 +122,7 @@ let personToShowInModal = null
   }
   @media (min-width: 768px) {  
     header {
-      display: flex; justify-content: space-between; align-items: flex-start;
+      display: flex; justify-content: flex-start; align-items: flex-start;
       margin-bottom: 2rem;
     }
     img {
