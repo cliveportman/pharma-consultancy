@@ -1,6 +1,6 @@
 import { writable } from 'svelte/store'
 
-export const url = "https://cogentia.theportman.co/api"
+export const url = "https://8819e3f9e6413ededb6aceec8a489abe-17531.sites.k-hosting.co.uk/api"
 
 export function options(query) {
   return {
