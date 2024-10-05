@@ -33,3 +33,6 @@ A pharmaceutical consultancy company based in Cambridge, UK. We were recommended
 Designing something for the pharamaceutical industry that didn't look staid and corporate, while also not looking like a Wordpress template, was the main challenge. I worked closely with the client and the designer to ensure the site was both visually appealing and easy to navigate.
 
 Integrating the video on the homepage required some finesse to deliver it perfectly across a range of devices.
+
+![screenshot services](./screenshot-services.png)
+![screenshot filter](./screenshot-filter.png)
